@@ -3,5 +3,5 @@
 //   cc: "first.person@company.com, second.person@company.com"
 // Every rep's recap email will copy these addresses. Reps can still change it on their phone in Settings.
 window.TP_CONFIG = {
-  cc: ""
+  cc: "williami@yourwirelessinc.com, jeremy@yourwirelessinc.com"
 };

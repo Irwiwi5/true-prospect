@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111111">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="True Prospect">
+<title>True Prospect</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{--o:#FF6A00;--k:#111;--g:#f3f3f3;--line:#e2e2e2;--mut:#6b6b6b;--ok:#1a7f37;--bad:#b42318}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--k);font:16px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+header{position:sticky;top:0;z-index:1000;background:var(--k);color:#fff;display:flex;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top)) 14px 10px}
+header .logo{width:32px;height:32px;border-radius:8px;background:var(--o);color:var(--k);font-weight:800;display:grid;place-items:center;font-size:14px;flex:none}
+header h1{font-size:17px;margin:0;flex:1}
+header button{background:none;border:0;color:#fff;font-size:15px;padding:6px}
+main{padding:16px 16px calc(100px + env(safe-area-inset-bottom));max-width:560px;margin:0 auto}
+.screen{display:none}.screen.on{display:block}
+h2{font-size:22px;margin:4px 0 4px}
+.sub{color:var(--mut);font-size:14px;margin:0 0 16px}
+label{display:block;font-size:13px;font-weight:600;margin:14px 0 6px;color:#333}
+input,select,textarea{width:100%;font:inherit;padding:12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--k)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--o)}
+textarea{min-height:110px;resize:vertical}
+.btn{display:block;width:100%;padding:14px;border-radius:12px;border:0;background:var(--o);color:var(--k);font-weight:700;font-size:16px;margin-top:14px;text-align:center;text-decoration:none;cursor:pointer}
+.btn.dark{background:var(--k);color:#fff}
+.btn.ghost{background:#fff;border:1.5px solid var(--k);color:var(--k)}
+.btn:disabled{opacity:.45}
+.row{display:flex;gap:10px}.row>*{flex:1;min-width:0}
+.card{border:1.5px solid var(--line);border-radius:14px;padding:14px;margin:12px 0;background:#fff}
+.card.o{border-color:var(--o);background:#fff7f0}
+.seg{display:flex;border:1.5px solid var(--k);border-radius:12px;overflow:hidden}
+.seg button{flex:1;padding:12px;border:0;background:#fff;font:inherit;font-weight:600;color:var(--k)}
+.seg button.on{background:var(--k);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:8px 12px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font:inherit;font-size:14px;color:var(--k)}
+.chip.on{background:var(--o);border-color:var(--o);font-weight:700}
+.stat{display:flex;gap:10px;margin:10px 0}.stat div{flex:1;background:var(--g);border-radius:12px;padding:10px;text-align:center}
+.stat b{display:block;font-size:24px}.stat span{font-size:12px;color:var(--mut)}
+.stop{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.num{width:30px;height:30px;border-radius:50%;background:var(--k);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
+.num.done{background:var(--ok)}.num.skip{background:#bbb}
+.stop .nm{font-weight:700}.stop .ad{font-size:13px;color:var(--mut)}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--g);margin-top:4px}
+.tag.lead{background:#fff0e5;color:#a64500}.tag.sold{background:#e6f4ea;color:var(--ok)}.tag.no{background:#fde8e8;color:var(--bad)}
+#map{height:260px;border-radius:14px;border:1.5px solid var(--line);margin:10px 0;z-index:1}
+.pin{background:var(--k);color:#fff;border:2px solid #fff;border-radius:50%;width:26px;height:26px;display:grid;place-items:center;font:700 12px/1 sans-serif;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.done{background:var(--ok)}.pin.me{background:var(--o);color:var(--k)}
+.note{font-size:13px;color:var(--mut)}
+.saved{font-size:12px;color:var(--ok);height:16px;margin-top:6px}
+.hint{background:#fff7f0;border-left:4px solid var(--o);padding:10px 12px;border-radius:8px;font-size:14px;margin:10px 0}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:1000}
+.bar .in{max-width:560px;margin:0 auto;display:flex;gap:10px}.bar .btn{margin:0}
+pre{white-space:pre-wrap;background:var(--g);padding:12px;border-radius:10px;font-size:13px;max-height:320px;overflow:auto}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--k);color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;transition:.25s;z-index:2000;pointer-events:none;max-width:90%;text-align:center}
+.toast.on{opacity:1}
+.spin{display:inline-block;width:16px;height:16px;border:2px solid #ccc;border-top-color:var(--o);border-radius:50%;animation:s 1s linear infinite;vertical-align:-3px}
+@keyframes s{to{transform:rotate(360deg)}}
+.small{font-size:12px;color:var(--mut);margin-top:24px;text-align:center}
+.cb{display:flex;gap:10px;align-items:center;font-weight:500}.cb input{width:auto}
+</style>
+</head>
+<body>
+<header>
+  <button id="back" aria-label="Back" style="display:none">&#8249; Back</button>
+  <div class="logo">TP</div><h1 id="title">True Prospect</h1>
+  <button id="gear" aria-label="Settings">&#9881;</button>
+</header>
+<main>
+
+<section class="screen" id="s-home">
+  <h2 id="hello">Ready to prospect?</h2>
+  <p class="sub" id="today"></p>
+  <div class="card">
+    <b>Your location</b>
+    <div id="gpsTxt" class="note">Not set yet</div>
+    <button class="btn ghost" id="gpsBtn">&#128205; Use my current location</button>
+  </div>
+  <button class="btn" id="startBtn" disabled>Plan today's blitz</button>
+  <div id="resumeBox"></div>
+  <button class="btn dark" data-go="history">My territory &amp; history</button>
+</section>
+
+<section class="screen" id="s-plan">
+  <h2>Plan</h2><p class="sub">How long are you out, and where do you finish?</p>
+  <label>Time to prospect</label>
+  <select id="hours">
+    <option value="1">1 hour</option><option value="1.5">1.5 hours</option><option value="2" selected>2 hours</option>
+    <option value="3">3 hours</option><option value="4">4 hours</option><option value="6">6 hours</option><option value="8">All day (8 hours)</option>
+  </select>
+  <label>Getting around</label>
+  <div class="seg" id="mode"><button data-v="walking" class="on">&#128694; Walking</button><button data-v="driving">&#128663; Driving</button></div>
+  <label>Where do you finish?</label>
+  <div class="seg" id="endType"><button data-v="back" class="on">Back where I started</button><button data-v="other">Somewhere else</button></div>
+  <div id="endBox" style="display:none">
+    <label>End destination (store, address or town)</label>
+    <input id="endQ" placeholder="e.g. 123 Main St, Doylestown PA">
+    <div class="note" id="endTxt"></div>
+  </div>
+  <button class="btn" id="planNext">Next: targets</button>
+</section>
+
+<section class="screen" id="s-targets">
+  <h2>Targets</h2><p class="sub">Who are we going after today?</p>
+  <label>Vertical</label><select id="vert"></select>
+  <label>Hunting for</label><select id="hunt"></select>
+  <label>How many businesses? <span class="note" id="suggestTxt"></span></label>
+  <input id="count" type="number" min="1" max="40" inputmode="numeric">
+  <label class="cb"><input type="checkbox" id="skipChains" checked> Skip big national chains (SMB focus)</label>
+  <label class="cb"><input type="checkbox" id="skipVisited" checked> Skip places I visited in the last <span id="skipDaysTxt">30</span> days</label>
+  <button class="btn" id="buildBtn">Build my route</button>
+  <div id="buildMsg" class="note" style="margin-top:10px"></div>
+</section>
+
+<section class="screen" id="s-route">
+  <h2 id="routeH">Today's route</h2><p class="sub" id="routeSub"></p>
+  <div id="map"></div>
+  <a class="btn dark" id="fullRoute" target="_blank" rel="noopener" style="margin-top:0">Open route in Maps</a>
+  <div class="note" id="fullRouteNote" style="margin-top:6px"></div>
+  <div id="stopList"></div>
+  <button class="btn ghost" id="addStopBtn">+ Add a business I found</button>
+  <button class="btn dark" id="toRecap">Finish &amp; recap</button>
+</section>
+
+<section class="screen" id="s-stop">
+  <div class="note" id="stopIdx"></div>
+  <h2 id="stopName"></h2>
+  <p class="sub" id="stopAddr"></p>
+  <div class="row">
+    <a class="btn" id="navBtn" target="_blank" rel="noopener" style="margin-top:0">Directions</a>
+    <a class="btn ghost" id="callBtn" style="margin-top:0;display:none">&#128222; Call</a>
+  </div>
+  <div class="hint" id="pitchHint"></div>
+  <label>Outcome</label><div class="chips" id="outcome"></div>
+  <label>Decision maker</label><input id="f-contact" data-f="contact" placeholder="Name / title">
+  <div class="row">
+    <div><label>Phone</label><input id="f-phone" data-f="phone" type="tel" inputmode="tel"></div>
+    <div><label>Email</label><input id="f-email" data-f="email" type="email" inputmode="email"></div>
+  </div>
+  <div class="row">
+    <div><label>Wireless carrier now</label><select id="f-carrier" data-f="carrier"></select></div>
+    <div><label>Internet now</label><select id="f-isp" data-f="isp"></select></div>
+  </div>
+  <div class="row">
+    <div><label># of lines</label><input id="f-lines" data-f="lines" type="number" inputmode="numeric" min="0"></div>
+    <div><label>Contract / pain point</label><input id="f-pain" data-f="pain" placeholder="e.g. up in March"></div>
+  </div>
+  <label>Interested in</label><div class="chips" id="interest"></div>
+  <label>Next steps</label><input id="f-next" data-f="next" placeholder="e.g. Send quote Fri, call back 12/7">
+  <label>Notes</label><textarea id="f-notes" data-f="notes" placeholder="What happened at this stop?"></textarea>
+  <div class="saved" id="savedTxt"></div>
+</section>
+
+<section class="screen" id="s-recap">
+  <h2>Daily recap</h2><p class="sub" id="recapSub"></p>
+  <div class="stat"><div><b id="r-visits">0</b><span>Visited</span></div><div><b id="r-leads">0</b><span>Leads</span></div><div><b id="r-sold">0</b><span>Sold</span></div></div>
+  <label>Anything to add for your managers?</label>
+  <textarea id="recapAdd" placeholder="Wins, blockers, what you'd do differently…" style="min-height:80px"></textarea>
+  <a class="btn" id="mailBtn">&#9993;&#65039; Email recap</a>
+  <div class="note" id="mailNote" style="margin-top:6px"></div>
+  <button class="btn ghost" id="copyRecap">Copy full recap</button>
+  <button class="btn ghost" id="copyLeadsA">Copy leads for Foot Blitz Log (columns B–E)</button>
+  <button class="btn ghost" id="copyLeadsB">Copy dates &amp; notes for the Log (columns N–Q)</button>
+  <div class="note" style="margin-top:6px">Paste the first copy into column B and the second into column N on the same rows of your tab. Add units in F–L yourself.</div>
+  <pre id="recapPre"></pre>
+  <button class="btn dark" id="endDay">End day &amp; save to history</button>
+</section>
+
+<section class="screen" id="s-history">
+  <h2>My territory</h2><p class="sub">Everything is saved on this phone.</p>
+  <div class="stat"><div><b id="h-days">0</b><span>Blitz days</span></div><div><b id="h-visits">0</b><span>Businesses visited</span></div><div><b id="h-leads">0</b><span>Leads</span></div></div>
+  <div class="card o"><b>Suggested next</b><div id="suggestTxt2" class="note"></div></div>
+  <div id="histList"></div>
+  <button class="btn ghost" id="exportBtn">Export my data (backup)</button>
+  <button class="btn ghost" id="importBtn">Restore from backup</button>
+  <input type="file" id="importFile" accept="application/json,.json" style="display:none">
+</section>
+
+<section class="screen" id="s-settings">
+  <h2>Settings</h2><p class="sub">Set these once on each phone.</p>
+  <label>Your name</label><input id="set-name" placeholder="First Last">
+  <label>Your email (the recap comes from you and copies you)</label><input id="set-email" type="email" inputmode="email">
+  <label>Your director</label><input id="set-dir" placeholder="As it appears on the Foot Blitz Log">
+  <label>Your store / location</label><input id="set-store" placeholder="As it appears on the Foot Blitz Log">
+  <label>Recap CC (comma separated)</label><input id="set-cc">
+  <label>Directions open in</label>
+  <select id="set-maps"><option value="auto">Match my phone (Apple Maps on iPhone, Google Maps elsewhere)</option><option value="apple">Apple Maps</option><option value="google">Google Maps</option></select>
+  <label>Skip businesses visited within (days)</label><input id="set-days" type="number" min="0" max="365" inputmode="numeric">
+  <button class="btn" id="saveSet">Save</button>
+  <p class="small">True Prospect v1 · Business data &copy; OpenStreetMap contributors</p>
+</section>
+
+</main>
+<div class="toast" id="toast"></div>
+
+<script src="config.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(()=>{
+"use strict";
+const VERTICALS={
+ "All verticals":['["shop"]','["office"]','["craft"]','["healthcare"]','["amenity"~"^(restaurant|cafe|fast_food|bar|pub|dentist|doctors|clinic|veterinary|car_wash|childcare)$"]','["leisure"~"^(fitness_centre|sports_centre)$"]'],
+ "Restaurants & food":['["amenity"~"^(restaurant|cafe|fast_food|bar|pub|ice_cream|food_court)$"]','["shop"~"^(bakery|deli|butcher|confectionery|pastry|seafood)$"]'],
+ "Contractors & trades":['["craft"]','["shop"~"^(hardware|doityourself|trade|plumbing|electrical|flooring|paint|glaziery)$"]','["office"="construction_company"]'],
+ "Medical & dental":['["amenity"~"^(doctors|dentist|clinic|pharmacy|veterinary)$"]','["healthcare"]','["shop"~"^(optician|medical_supply|hearing_aids)$"]'],
+ "Auto repair & dealers":['["shop"~"^(car|car_repair|tyres|car_parts|motorcycle|truck)$"]','["amenity"~"^(car_wash|car_rental)$"]','["craft"="car_repair"]'],
+ "Retail shops":['["shop"]'],
+ "Salons & beauty":['["shop"~"^(hairdresser|beauty|cosmetics|massage|tattoo|nails|barber)$"]','["amenity"="spa"]'],
+ "Professional services":['["office"~"^(lawyer|accountant|insurance|financial|financial_advisor|consulting|tax_advisor|architect|it|company|notary|employment_agency|advertising_agency|surveyor|engineer)$"]'],
+ "Fitness & gyms":['["leisure"~"^(fitness_centre|sports_centre|dance)$"]','["shop"="sports"]'],
+ "Real estate":['["office"~"^(estate_agent|property_management)$"]'],
+ "Logistics & delivery":['["office"~"^(logistics|courier|moving_company|transport)$"]','["shop"="storage_rental"]','["industrial"]']
+};
+const HUNT={
+ "Any opportunity":"Open with: \"Who handles your phones and internet here?\" Find the decision maker and the best time to come back.",
+ "On another carrier (AT&T, T-Mobile)":"Ask who they're with and when they're up. Lead with the Switching Allowance and holiday new-line pricing on the deal sheet.",
+ "No business internet / on cable":"Ask what they pay for internet and what happens when it goes down. Lead with Business Internet and the free router offer.",
+ "Needs desk phones (One Talk)":"Ask how calls reach the owner after hours. Lead with One Talk: the business number on every cell, plus auto-receptionist.",
+ "Existing Verizon: upgrades & add-a-line":"Check for upgrade-eligible lines and add-a-line offers. Offer a free account review.",
+ "Fleet & vehicles":"Ask how many vehicles and who drives them. Lead with Jetpacks or tablets for the trucks and add-a-line pricing."
+};
+const CARRIERS=["Unknown","Verizon","AT&T","T-Mobile","Spectrum Mobile","Xfinity Mobile","Other"];
+const ISPS=["Unknown","None","Comcast / Xfinity","Verizon Fios","Verizon 5G/LTE","Spectrum","Optimum","AT&T","T-Mobile Home Internet","Other"];
+const OUTCOMES=[["Talked to owner/DM",""],["Left info",""],["Come back later",""],["Lead - follow up","lead"],["Sold","sold"],["Not interested","no"],["Closed / gone","no"]];
+const INTEREST=["Smartphone","FWA","Business Internet","Upgrade","One Talk","Jetpack","Tablet","Watch"];
+const DEFAULT_CC=((window.TP_CONFIG&&window.TP_CONFIG.cc)||"").trim();
+const OVERPASS=["https://overpass-api.de/api/interpreter","https://overpass.kumi.systems/api/interpreter","https://maps.mail.ru/osm/tools/overpass/api/interpreter"];
+const KEY="trueProspect.v1";
+
+let S=load();
+function blank(){return{settings:{name:"",email:"",dir:"",store:"",cc:DEFAULT_CC,maps:"auto",days:30},loc:null,session:null,history:[],visited:{}};}
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.settings){const b=blank();b.settings=Object.assign(b.settings,s.settings);if(!b.settings.cc)b.settings.cc=DEFAULT_CC;return Object.assign(b,s,{settings:b.settings});}}catch(e){}return blank();}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){toast("Couldn't save on this phone");}}
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function toast(t){const e=$("toast");e.textContent=t;e.classList.add("on");clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove("on"),2200);}
+function dist(a,b){const R=6371e3,r=x=>x*Math.PI/180,dLa=r(b.lat-a.lat),dLo=r(b.lon-a.lon);const h=Math.sin(dLa/2)**2+Math.cos(r(a.lat))*Math.cos(r(b.lat))*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+const mi=m=>(m/1609.34).toFixed(m<1609?2:1)+" mi";
+const fmtTime=t=>new Date(t).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"});
+const isApple=()=>/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+function mapsApp(){const m=S.settings.maps;return m==="auto"?(isApple()?"apple":"google"):m;}
+function navUrl(dest,from){const mode=(S.session&&S.session.mode)||"walking";
+ if(mapsApp()==="apple")return `https://maps.apple.com/?${from?`saddr=${from.lat},${from.lon}&`:""}daddr=${dest.lat},${dest.lon}&dirflg=${mode==="walking"?"w":"d"}`;
+ return `https://www.google.com/maps/dir/?api=1${from?`&origin=${from.lat},${from.lon}`:""}&destination=${dest.lat},${dest.lon}&travelmode=${mode}`;}
+async function copy(t){try{await navigator.clipboard.writeText(t);}catch(e){const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}toast("Copied");}
+function fillSelect(el,arr,val){el.innerHTML=arr.map(v=>`<option${v===val?" selected":""}>${esc(v)}</option>`).join("");}
+
+const TITLES={home:"True Prospect",plan:"Plan",targets:"Targets",route:"Route",stop:"Stop",recap:"Recap",history:"Territory",settings:"Settings"};
+const BACK={plan:"home",targets:"plan",route:"home",stop:"route",recap:"route",history:"home",settings:"home"};
+let cur="home",curStop=-1;
+function go(n){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on",s.id==="s-"+n));cur=n;
+ $("title").textContent=TITLES[n];$("back").style.display=n==="home"?"none":"";$("gear").style.display=n==="settings"?"none":"";
+ const b=$("stopBar");if(b)b.style.display=n==="stop"?"":"none";
+ window.scrollTo(0,0);const r={home:renderHome,targets:renderTargets,route:renderRoute,recap:renderRecap,history:renderHistory,settings:renderSettings}[n];if(r)r();}
+$("back").onclick=()=>go(BACK[cur]||"home");
+$("gear").onclick=()=>go("settings");
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+function seg(id,cb){const el=$(id);el.querySelectorAll("button").forEach(b=>b.onclick=()=>{el.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));if(cb)cb(b.dataset.v);});}
+const segVal=id=>$(id).querySelector("button.on").dataset.v;
+
+/* HOME */
+function renderHome(){
+ $("hello").textContent=S.settings.name?`Ready to prospect, ${S.settings.name.split(" ")[0]}?`:"Ready to prospect?";
+ $("today").textContent=new Date().toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
+ if(S.loc)$("gpsTxt").innerHTML=`${esc(S.loc.label||`${S.loc.lat.toFixed(5)}, ${S.loc.lon.toFixed(5)}`)}<br><span class="note">Updated ${fmtTime(S.loc.t)}</span>`;
+ $("startBtn").disabled=!S.loc;
+ const s=S.session;
+ $("resumeBox").innerHTML=s?`<div class="card o"><b>Blitz in progress</b><div class="note">${esc(s.vertical)} · ${s.stops.filter(x=>x.outcome).length} of ${s.stops.length} stops logged</div><button class="btn" id="resumeBtn">Resume route</button></div>`:"";
+ if(s)$("resumeBtn").onclick=()=>go("route");
+}
+$("gpsBtn").onclick=()=>{
+ if(!navigator.geolocation)return toast("Location isn't available on this device");
+ $("gpsTxt").innerHTML='<span class="spin"></span> Finding you…';
+ navigator.geolocation.getCurrentPosition(async p=>{
+  S.loc={lat:p.coords.latitude,lon:p.coords.longitude,acc:p.coords.accuracy,t:Date.now()};save();renderHome();
+  try{const r=await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=18&lat=${S.loc.lat}&lon=${S.loc.lon}`);const j=await r.json();const a=j.address||{};
+   S.loc.label=[[a.house_number,a.road].filter(Boolean).join(" "),a.city||a.town||a.village||a.hamlet||a.suburb,a.state].filter(Boolean).join(", ");save();renderHome();}catch(e){}
+ },e=>{$("gpsTxt").textContent=e.code===1?"Location permission is off. Allow location for your browser in your phone's Settings, then try again.":"Couldn't get a GPS fix. Step outside and try again.";},{enableHighAccuracy:true,timeout:15000,maximumAge:60000});
+};
+$("startBtn").onclick=()=>{if(S.session){if(!confirm("You have a blitz in progress. Start a new one? The current one will be saved to history."))return;archive();}go("plan");};
+
+/* PLAN */
+seg("mode");seg("endType",v=>$("endBox").style.display=v==="other"?"":"none");
+let endPt=null;
+$("planNext").onclick=async()=>{
+ endPt=null;$("endTxt").textContent="";
+ if(segVal("endType")==="other"){const q=$("endQ").value.trim();if(!q)return toast("Type where you finish");
+  $("endTxt").innerHTML='<span class="spin"></span> Looking that up…';
+  try{const vb=`${S.loc.lon-0.6},${S.loc.lat+0.6},${S.loc.lon+0.6},${S.loc.lat-0.6}`;
+   const r=await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=us&viewbox=${vb}&q=${encodeURIComponent(q)}`);const j=await r.json();
+   if(!j.length){$("endTxt").textContent="Couldn't find that. Try adding the town and state.";return;}
+   endPt={lat:+j[0].lat,lon:+j[0].lon,label:j[0].display_name.split(",").slice(0,3).join(",")};
+   $("endTxt").textContent="Finish: "+endPt.label+" ("+mi(dist(S.loc,endPt))+" away)";
+  }catch(e){$("endTxt").textContent="No connection to look that up. Try again.";return;}}
+ go("targets");
+};
+
+/* TARGETS */
+fillSelect($("vert"),Object.keys(VERTICALS),"All verticals");
+fillSelect($("hunt"),Object.keys(HUNT),"Any opportunity");
+function suggestCount(){const h=+$("hours").value,w=segVal("mode")==="walking";return Math.max(3,Math.min(40,Math.round(h*(w?5:3))));}
+function renderTargets(){const n=suggestCount();$("count").value=n;$("skipDaysTxt").textContent=S.settings.days;
+ $("suggestTxt").textContent=`(suggested ${n}: about ${segVal("mode")==="walking"?"12":"20"} min per stop)`;$("buildMsg").textContent="";}
+function overpassQ(vert,area){return `[out:json][timeout:25];(${VERTICALS[vert].map(s=>`nwr${s}["name"](${area});`).join("")});out center tags 400;`;}
+async function fetchOverpass(q){let last;for(const u of OVERPASS){try{const r=await fetch(u,{method:"POST",body:"data="+encodeURIComponent(q),headers:{"Content-Type":"application/x-www-form-urlencoded"}});if(r.ok)return await r.json();last=r.status;}catch(e){last="offline";}}throw new Error("The business lookup is busy right now ("+last+")");}
+const addrOf=t=>[[t["addr:housenumber"],t["addr:street"]].filter(Boolean).join(" "),t["addr:city"]].filter(Boolean).join(", ");
+const kindOf=t=>String(t.shop||t.amenity||t.office||t.craft||t.healthcare||t.leisure||t.industrial||"business").replace(/_/g," ").replace(/;.*/,"");
+$("buildBtn").onclick=async()=>{
+ const btn=$("buildBtn");btn.disabled=true;$("buildMsg").innerHTML='<span class="spin"></span> Finding businesses near you…';
+ const mode=segVal("mode"),hours=+$("hours").value,want=Math.max(1,Math.min(40,+$("count").value||suggestCount())),vert=$("vert").value,start={lat:S.loc.lat,lon:S.loc.lon};
+ let area;
+ if(endPt){const pad=mode==="walking"?0.006:0.02;area=`${Math.min(start.lat,endPt.lat)-pad},${Math.min(start.lon,endPt.lon)-pad},${Math.max(start.lat,endPt.lat)+pad},${Math.max(start.lon,endPt.lon)+pad}`;}
+ else{const rad=mode==="walking"?Math.min(1600,500+hours*300):Math.min(12000,2500+hours*1500);area=`around:${rad},${start.lat},${start.lon}`;}
+ try{
+  const j=await fetchOverpass(overpassQ(vert,area));
+  const cutoff=Date.now()-S.settings.days*864e5;let skippedV=0,skippedC=0;const seen=new Set();let c=[];
+  for(const e of j.elements||[]){const lat=e.lat??(e.center&&e.center.lat),lon=e.lon??(e.center&&e.center.lon);if(lat==null)continue;const t=e.tags||{};
+   const id=e.type[0]+e.id,dup=t.name.toLowerCase()+"|"+Math.round(lat*1e3)+"|"+Math.round(lon*1e3);if(seen.has(dup))continue;seen.add(dup);
+   if(t.disused||t.vacant)continue;
+   if($("skipChains").checked&&(t["brand:wikidata"]||t["operator:wikidata"])){skippedC++;continue;}
+   if($("skipVisited").checked&&S.visited[id]&&S.visited[id].t>cutoff){skippedV++;continue;}
+   c.push({id,name:t.name,lat,lon,addr:addrOf(t),kind:kindOf(t),phone:t.phone||t["contact:phone"]||"",web:t.website||t["contact:website"]||""});}
+  btn.disabled=false;
+  if(!c.length){$("buildMsg").textContent=`No matching businesses found here${skippedV?` (${skippedV} already visited)`:""}. Try "All verticals", driving, or more time.`;return;}
+  c=pickAndOrder(c,start,endPt,want);
+  S.session={id:Date.now(),date:new Date().toISOString(),mode,hours,vertical:vert,hunt:$("hunt").value,start:{...start,label:S.loc.label||""},end:endPt,stops:c.map(x=>({...x,outcome:"",interest:[]})),note:"",skipped:{visited:skippedV,chains:skippedC}};
+  $("recapAdd").value="";save();go("route");
+  if(c.length<want)toast(`Only found ${c.length}. Add any you spot along the way.`);
+ }catch(e){$("buildMsg").textContent=e.message+". Wait a minute and tap Build again.";btn.disabled=false;}
+};
+function pickAndOrder(c,start,end,n){
+ if(end){const dx=end.lon-start.lon,dy=end.lat-start.lat,L=dx*dx+dy*dy||1e-12;
+  c.forEach(p=>{let t=((p.lon-start.lon)*dx+(p.lat-start.lat)*dy)/L;t=Math.max(0,Math.min(1,t));p._t=t;p._d=dist(p,{lat:start.lat+t*dy,lon:start.lon+t*dx});});
+  c.sort((a,b)=>a._d-b._d);c=c.slice(0,n);c.sort((a,b)=>a._t-b._t);}
+ else{c.forEach(p=>p._d=dist(p,start));c.sort((a,b)=>a._d-b._d);c=c.slice(0,n);
+  const out=[];let here=start;while(c.length){let bi=0,bd=Infinity;c.forEach((p,i)=>{const d=dist(here,p);if(d<bd){bd=d;bi=i;}});here=c.splice(bi,1)[0];out.push(here);}c=out;}
+ return c.map(p=>{const q={...p};delete q._t;delete q._d;return q;});}
+
+/* ROUTE */
+let map,layer;
+function renderRoute(){const s=S.session;if(!s)return go("home");
+ const done=s.stops.filter(x=>x.outcome).length;let tot=0,prev=s.start;s.stops.forEach(p=>{tot+=dist(prev,p);prev=p;});tot+=dist(prev,s.end||s.start);
+ $("routeH").textContent=`${s.stops.length} stops · ${s.vertical}`;
+ $("routeSub").textContent=`${done} logged · about ${mi(tot*1.3)} ${s.mode} · ${s.hunt}`;
+ $("stopList").innerHTML=s.stops.map((p,i)=>{const o=OUTCOMES.find(x=>x[0]===p.outcome);
+  return `<div class="stop" data-i="${i}"><div class="num ${p.outcome?(o&&o[1]==="no"?"skip":"done"):""}">${i+1}</div><div style="flex:1"><div class="nm">${esc(p.name)}</div><div class="ad">${esc(p.kind)}${p.addr?" · "+esc(p.addr):""}</div>${p.outcome?`<span class="tag ${o?o[1]:""}">${esc(p.outcome)}</span>`:""}</div><div class="note">&#8250;</div></div>`;}).join("");
+ $("stopList").querySelectorAll(".stop").forEach(el=>el.onclick=()=>openStop(+el.dataset.i));
+ const pend=s.stops.filter(p=>!p.outcome),legs=pend.length?pend:s.stops,fin=s.end||s.start;
+ if(mapsApp()==="google"){const wp=legs.slice(0,9),o=S.loc||s.start;
+  $("fullRoute").href=`https://www.google.com/maps/dir/?api=1&origin=${o.lat},${o.lon}&destination=${fin.lat},${fin.lon}&waypoints=${encodeURIComponent(wp.map(p=>p.lat+","+p.lon).join("|"))}&travelmode=${s.mode}`;
+  $("fullRoute").textContent="Open route in Google Maps";
+  $("fullRouteNote").textContent=legs.length>9?"Google Maps takes the next 9 stops at a time. Open it again after those.":"";}
+ else{$("fullRoute").href=navUrl(legs[0]);$("fullRoute").textContent="Apple Maps: next stop";$("fullRouteNote").textContent="Apple Maps takes one stop at a time. Each stop has its own Directions button.";}
+ drawMap();}
+function drawMap(){const s=S.session;
+ if(!window.L){$("map").innerHTML='<div class="note" style="padding:20px">Map unavailable offline. Your stop list still works.</div>';return;}
+ if(!map){map=L.map("map",{zoomControl:false});L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"&copy; OpenStreetMap"}).addTo(map);}
+ if(layer)layer.remove();layer=L.layerGroup().addTo(map);
+ const pts=[[s.start.lat,s.start.lon],...s.stops.map(p=>[p.lat,p.lon])];if(s.end)pts.push([s.end.lat,s.end.lon]);else pts.push([s.start.lat,s.start.lon]);
+ L.polyline(pts,{color:"#FF6A00",weight:3,dashArray:"6 6"}).addTo(layer);
+ const ic=(t,c)=>L.divIcon({className:"",html:`<div class="pin ${c}">${t}</div>`,iconSize:[26,26],iconAnchor:[13,13]});
+ L.marker([s.start.lat,s.start.lon],{icon:ic("S","me")}).addTo(layer);
+ if(s.end)L.marker([s.end.lat,s.end.lon],{icon:ic("E","me")}).addTo(layer);
+ s.stops.forEach((p,i)=>L.marker([p.lat,p.lon],{icon:ic(i+1,p.outcome?"done":"")}).on("click",()=>openStop(i)).addTo(layer));
+ setTimeout(()=>{map.invalidateSize();map.fitBounds(pts,{padding:[24,24],maxZoom:17});},60);}
+$("addStopBtn").onclick=()=>{const name=prompt("Business name?");if(!name)return;
+ const add=p=>{S.session.stops.push({id:"m"+Date.now(),name,lat:p.lat,lon:p.lon,addr:"",kind:"added on the street",phone:"",web:"",outcome:"",interest:[]});save();openStop(S.session.stops.length-1);};
+ if(navigator.geolocation)navigator.geolocation.getCurrentPosition(p=>add({lat:p.coords.latitude,lon:p.coords.longitude}),()=>add(S.loc),{enableHighAccuracy:true,timeout:10000});else add(S.loc);};
+$("toRecap").onclick=()=>go("recap");
+
+/* STOP */
+fillSelect($("f-carrier"),CARRIERS);fillSelect($("f-isp"),ISPS);
+$("outcome").innerHTML=OUTCOMES.map(o=>`<button class="chip" data-v="${esc(o[0])}">${esc(o[0])}</button>`).join("");
+$("interest").innerHTML=INTEREST.map(o=>`<button class="chip" data-v="${esc(o)}">${esc(o)}</button>`).join("");
+function openStop(i){curStop=i;const s=S.session,p=s.stops[i];
+ const bar=$("stopBar")||document.body.appendChild(Object.assign(document.createElement("div"),{id:"stopBar",className:"bar"}));
+ go("stop");
+ $("stopIdx").textContent=`Stop ${i+1} of ${s.stops.length}`;$("stopName").textContent=p.name;
+ $("stopAddr").textContent=[p.kind,p.addr].filter(Boolean).join(" · ")+(S.loc?` · ${mi(dist(S.loc,p))} from your last GPS fix`:"");
+ $("navBtn").href=navUrl(p);$("navBtn").innerHTML=`&#129517; ${mapsApp()==="apple"?"Apple":"Google"} Maps`;
+ $("callBtn").style.display=p.phone?"":"none";$("callBtn").href="tel:"+String(p.phone||"").replace(/[^\d+]/g,"");
+ $("pitchHint").innerHTML=`<b>${esc(s.hunt)}:</b> ${esc(HUNT[s.hunt]||"")}`;
+ document.querySelectorAll("#s-stop [data-f]").forEach(el=>{const v=p[el.dataset.f];el.value=v!=null?v:(el.tagName==="SELECT"?el.options[0].value:"");});
+ document.querySelectorAll("#outcome .chip").forEach(b=>b.classList.toggle("on",b.dataset.v===p.outcome));
+ document.querySelectorAll("#interest .chip").forEach(b=>b.classList.toggle("on",(p.interest||[]).includes(b.dataset.v)));
+ $("savedTxt").textContent=p.saved?"Saved "+fmtTime(p.saved):"";
+ const last=i>=s.stops.length-1;
+ bar.innerHTML=`<div class="in"><button class="btn ghost" id="sbList">All stops</button><button class="btn" id="sbNext">${last?"Finish &amp; recap":"Save &amp; next stop &#8250;"}</button></div>`;
+ $("sbList").onclick=()=>go("route");
+ $("sbNext").onclick=()=>{const q=S.session.stops[curStop];if(!q.outcome&&!(q.notes||"").trim()&&!confirm("No outcome or notes yet. Move on anyway?"))return;if(last)go("recap");else openStop(curStop+1);};
+}
+function stopSave(){const p=S.session.stops[curStop];p.saved=Date.now();
+ if(p.outcome)S.visited[p.id]={t:Date.now(),name:p.name,outcome:p.outcome,lat:p.lat,lon:p.lon};else delete S.visited[p.id];
+ save();$("savedTxt").textContent="Saved ✓ "+fmtTime(Date.now());}
+document.querySelectorAll("#s-stop [data-f]").forEach(el=>{const h=()=>{S.session.stops[curStop][el.dataset.f]=el.value;stopSave();};el.addEventListener("input",h);el.addEventListener("change",h);});
+document.querySelectorAll("#outcome .chip").forEach(b=>b.onclick=()=>{const p=S.session.stops[curStop];p.outcome=p.outcome===b.dataset.v?"":b.dataset.v;
+ document.querySelectorAll("#outcome .chip").forEach(x=>x.classList.toggle("on",x.dataset.v===p.outcome));stopSave();});
+document.querySelectorAll("#interest .chip").forEach(b=>b.onclick=()=>{const p=S.session.stops[curStop];p.interest=p.interest||[];const k=p.interest.indexOf(b.dataset.v);if(k<0)p.interest.push(b.dataset.v);else p.interest.splice(k,1);b.classList.toggle("on");stopSave();});
+
+/* RECAP */
+const isLead=p=>p.outcome==="Lead - follow up"||p.outcome==="Sold"||((p.interest||[]).length>0&&p.outcome!=="Not interested");
+function recapText(full){const s=S.session,st=S.settings,v=s.stops.filter(p=>p.outcome),leads=s.stops.filter(isLead),sold=s.stops.filter(p=>p.outcome==="Sold");
+ const d=new Date(s.date).toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
+ const tally=(arr,f)=>{const o={};arr.forEach(p=>[].concat(f(p)||[]).forEach(x=>{if(x&&x!=="Unknown")o[x]=(o[x]||0)+1;}));return Object.entries(o).sort((a,b)=>b[1]-a[1]).map(([k,n])=>`${k} ${n}`).join(", ")||"none noted";};
+ const area=s.start.label||`${s.start.lat.toFixed(4)}, ${s.start.lon.toFixed(4)}`;
+ let t=`TRUE PROSPECT RECAP: ${st.name||"Rep"}, ${d}\n`;
+ t+=`Area: ${area}${s.end?` to ${s.end.label}`:""} (${s.mode}, ${s.hours} hr)\nVertical: ${s.vertical} | Hunting for: ${s.hunt}\n\n`;
+ t+=`SCOREBOARD\nPlanned ${s.stops.length} | Visited ${v.length} | Leads ${leads.length} | Sold ${sold.length}\n`;
+ t+=`Carriers seen: ${tally(v,p=>p.carrier)}\nInternet seen: ${tally(v,p=>p.isp)}\nInterest: ${tally(leads,p=>p.interest)}\n`;
+ const add=($("recapAdd").value||"").trim();if(add)t+=`\nREP NOTES\n${add}\n`;
+ if(leads.length){t+=`\nLEADS & FOLLOW-UPS\n`;leads.forEach((p,i)=>{
+  t+=`${i+1}. ${p.name}${p.addr?" ("+p.addr+")":""}\n   ${p.outcome||"Interested"}${p.contact?" | "+p.contact:""}${p.phone?" | "+p.phone:""}${p.email?" | "+p.email:""}\n`;
+  const now=[p.carrier&&p.carrier!=="Unknown"?"Wireless: "+p.carrier:"",p.isp&&p.isp!=="Unknown"?"Internet: "+p.isp:"",p.lines?p.lines+" lines":"",p.pain,(p.interest||[]).length?"Wants: "+p.interest.join(", "):""].filter(Boolean).join(" | ");
+  if(now)t+=`   ${now}\n`;
+  if(p.next)t+=`   Next: ${p.next}\n`;if(p.notes)t+=`   Notes: ${p.notes}\n`;});}
+ const others=v.filter(p=>!isLead(p));
+ if(others.length){t+=`\nOTHER STOPS\n`;others.forEach(p=>{t+=`- ${p.name}: ${p.outcome}${full&&p.notes?" ("+p.notes+")":""}\n`;});}
+ const not=s.stops.filter(p=>!p.outcome);if(not.length)t+=`\nNOT REACHED (${not.length}): ${not.map(p=>p.name).join(", ")}\n`;
+ return t;}
+function renderRecap(){const s=S.session;if(!s)return go("home");
+ $("r-visits").textContent=s.stops.filter(p=>p.outcome).length;$("r-leads").textContent=s.stops.filter(isLead).length;$("r-sold").textContent=s.stops.filter(p=>p.outcome==="Sold").length;
+ $("recapSub").textContent=new Date(s.date).toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
+ if(!$("recapAdd").value&&s.note)$("recapAdd").value=s.note;
+ updMail();}
+const LIM=1800;
+function updMail(){const s=S.session,st=S.settings,full=recapText(true);$("recapPre").textContent=full;
+ let body=full;if(body.length>LIM)body=recapText(false);
+ const trimmed=body.length>LIM;if(trimmed)body=body.slice(0,LIM)+"\n\n...(trimmed. The full recap is on your clipboard: paste it here.)";
+ const subj=`True Prospect recap: ${st.name||"Rep"}, ${new Date(s.date).toLocaleDateString("en-US")}`;
+ const q=[];if(st.cc)q.push("cc="+encodeURIComponent(st.cc));q.push("subject="+encodeURIComponent(subj));q.push("body="+encodeURIComponent(body));
+ $("mailBtn").href=`mailto:${encodeURIComponent(st.email||"")}?${q.join("&")}`;$("mailBtn").dataset.trim=trimmed?"1":"";
+ $("mailNote").textContent=`${st.email?"To you":"Add your email in Settings"}${st.cc?", cc "+st.cc:". No CC set: add your managers in Settings."}`;}
+$("recapAdd").addEventListener("input",()=>{if(!S.session)return;S.session.note=$("recapAdd").value;save();updMail();});
+$("mailBtn").addEventListener("click",()=>{if($("mailBtn").dataset.trim)copy(recapText(true));});
+$("copyRecap").onclick=()=>copy(recapText(true));
+const clean=x=>String(x||"").replace(/[\t\r\n]+/g," ").trim();
+$("copyLeadsA").onclick=()=>{const st=S.settings,L=S.session.stops.filter(isLead);if(!L.length)return toast("No leads yet");
+ copy(L.map(p=>[p.name,st.dir,st.store,"Prospecting"].map(clean).join("\t")).join("\n"));};
+$("copyLeadsB").onclick=()=>{const s=S.session,L=s.stops.filter(isLead);if(!L.length)return toast("No leads yet");const d=new Date(s.date).toLocaleDateString("en-US");
+ copy(L.map(p=>[d,"In Person",p.next,[p.contact,p.phone,p.email,p.carrier&&p.carrier!=="Unknown"?"On "+p.carrier:"",p.lines?p.lines+" lines":"",(p.interest||[]).length?"Wants "+p.interest.join("/"):"",p.notes].filter(Boolean).join("; ")].map(clean).join("\t")).join("\n"));};
+function archive(){const s=S.session;if(!s)return;if($("recapAdd").value)s.note=$("recapAdd").value;S.history.unshift(s);S.session=null;$("recapAdd").value="";save();}
+$("endDay").onclick=()=>{if(!confirm("End today's blitz and save it to your history?"))return;archive();toast("Saved to history");go("history");};
+
+/* HISTORY */
+function renderHistory(){const H=S.history;
+ $("h-days").textContent=H.length;$("h-visits").textContent=Object.keys(S.visited).length;$("h-leads").textContent=H.reduce((a,s)=>a+s.stops.filter(isLead).length,0);
+ const fu=[];H.forEach(s=>s.stops.forEach(p=>{if(p.outcome==="Lead - follow up"||p.outcome==="Come back later")fu.push(Object.assign({},p,{d:s.date}));}));
+ const worked={};H.forEach(s=>worked[s.vertical]=1);
+ const untried=Object.keys(VERTICALS).filter(v=>v!=="All verticals"&&!worked[v]);
+ const sug=[];
+ if(fu.length){const o=fu[fu.length-1];sug.push(`<b>${fu.length} follow-up${fu.length>1?"s":""} waiting.</b> Oldest: ${esc(o.name)} (${new Date(o.d).toLocaleDateString("en-US")}).`);}
+ if(untried.length)sug.push(`Verticals you haven't worked yet: ${untried.slice(0,4).map(esc).join(", ")}.`);
+ const far=freshDir();if(far)sug.push(`Fresh ground: you've worked least to the <b>${far}</b> of where you usually start. Head that way next.`);
+ sug.push(`Businesses you've visited in the last ${S.settings.days} days are skipped automatically on new routes.`);
+ $("suggestTxt2").innerHTML=sug.join("<br><br>");
+ $("histList").innerHTML=(fu.length?`<h3 style="margin:18px 0 4px">Follow-ups</h3>`+fu.map(p=>`<div class="stop"><div class="num">!</div><div style="flex:1"><div class="nm">${esc(p.name)}</div><div class="ad">${esc(p.outcome)} · ${new Date(p.d).toLocaleDateString("en-US")}${p.next?" · "+esc(p.next):""}${p.phone?" · "+esc(p.phone):""}</div></div><a class="note" target="_blank" rel="noopener" href="${navUrl(p)}">Map</a></div>`).join(""):"")+
+  (H.length?`<h3 style="margin:18px 0 4px">Past blitzes</h3>`+H.map(s=>{const v=s.stops.filter(p=>p.outcome).length;return `<div class="stop"><div class="num done">${v}</div><div style="flex:1"><div class="nm">${new Date(s.date).toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})} · ${esc(s.vertical)}</div><div class="ad">${esc(s.start.label||"")} · ${v} visited · ${s.stops.filter(isLead).length} leads</div></div></div>`;}).join(""):`<p class="note">No blitzes saved yet. Finish a route and tap “End day” to start building your territory.</p>`);}
+function freshDir(){const all=Object.values(S.visited);if(all.length<5||!S.history.length)return"";const c=S.history.map(s=>s.start);
+ const lat=c.reduce((a,b)=>a+b.lat,0)/c.length,lon=c.reduce((a,b)=>a+b.lon,0)/c.length,q={north:0,south:0,east:0,west:0};
+ all.forEach(p=>{const dy=p.lat-lat,dx=(p.lon-lon)*Math.cos(lat*Math.PI/180);if(Math.abs(dy)>Math.abs(dx))q[dy>0?"north":"south"]++;else q[dx>0?"east":"west"]++;});
+ return Object.entries(q).sort((a,b)=>a[1]-b[1])[0][0];}
+$("exportBtn").onclick=()=>{const b=new Blob([JSON.stringify(S)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=`true-prospect-backup-${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(a);a.click();a.remove();};
+$("importBtn").onclick=()=>$("importFile").click();
+$("importFile").onchange=async e=>{const f=e.target.files[0];e.target.value="";if(!f)return;try{const d=JSON.parse(await f.text());if(!d.settings)throw 0;if(!confirm("Replace everything on this phone with this backup?"))return;S=Object.assign(blank(),d);save();toast("Restored");renderHistory();}catch(x){toast("That file isn't a True Prospect backup");}};
+
+/* SETTINGS */
+function renderSettings(){const st=S.settings;$("set-name").value=st.name;$("set-email").value=st.email;$("set-dir").value=st.dir;$("set-store").value=st.store;$("set-cc").value=st.cc;$("set-maps").value=st.maps;$("set-days").value=st.days;}
+$("saveSet").onclick=()=>{const st=S.settings;st.name=$("set-name").value.trim();st.email=$("set-email").value.trim();st.dir=$("set-dir").value.trim();st.store=$("set-store").value.trim();
+ st.cc=$("set-cc").value.trim();st.maps=$("set-maps").value;st.days=Math.max(0,parseInt($("set-days").value,10)||0);save();toast("Saved");go("home");};
+
+go("home");
+if(!S.settings.name)setTimeout(()=>toast("First time? Tap ⚙ to add your name and email"),700);
+if("serviceWorker" in navigator&&location.protocol==="https:")navigator.serviceWorker.register("sw.js").catch(()=>{});
+})();
+</script>
+</body>
+</html>

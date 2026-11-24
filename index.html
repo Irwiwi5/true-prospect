@@ -22,41 +22,50 @@ header h1{font-size:17px;margin:0;flex:1}
 header button{background:none;border:0;color:#fff;font-size:15px;padding:6px}
 main{padding:16px 16px calc(100px + env(safe-area-inset-bottom));max-width:560px;margin:0 auto}
 .screen{display:none}.screen.on{display:block}
-h2{font-size:22px;margin:4px 0 4px}
+h2{font-size:22px;margin:4px 0 4px}h3{font-size:16px;margin:18px 0 6px}
 .sub{color:var(--mut);font-size:14px;margin:0 0 16px}
 label{display:block;font-size:13px;font-weight:600;margin:14px 0 6px;color:#333}
 input,select,textarea{width:100%;font:inherit;padding:12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--k)}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--o)}
-textarea{min-height:110px;resize:vertical}
+textarea{min-height:100px;resize:vertical}
 .btn{display:block;width:100%;padding:14px;border-radius:12px;border:0;background:var(--o);color:var(--k);font-weight:700;font-size:16px;margin-top:14px;text-align:center;text-decoration:none;cursor:pointer}
-.btn.dark{background:var(--k);color:#fff}
-.btn.ghost{background:#fff;border:1.5px solid var(--k);color:var(--k)}
+.btn.dark{background:var(--k);color:#fff}.btn.ghost{background:#fff;border:1.5px solid var(--k);color:var(--k)}
+.btn.sm{padding:10px;font-size:14px;margin-top:8px}
 .btn:disabled{opacity:.45}
 .row{display:flex;gap:10px}.row>*{flex:1;min-width:0}
 .card{border:1.5px solid var(--line);border-radius:14px;padding:14px;margin:12px 0;background:#fff}
 .card.o{border-color:var(--o);background:#fff7f0}
+.mode{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.mode button{border:0;border-radius:16px;padding:20px 10px;font:inherit;font-weight:800;font-size:17px;background:var(--k);color:#fff;cursor:pointer}
+.mode button span{display:block;font-size:34px;margin-bottom:6px}
+.mode button.call{background:var(--o);color:var(--k)}
 .seg{display:flex;border:1.5px solid var(--k);border-radius:12px;overflow:hidden}
 .seg button{flex:1;padding:12px;border:0;background:#fff;font:inherit;font-weight:600;color:var(--k)}
 .seg button.on{background:var(--k);color:#fff}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{padding:8px 12px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font:inherit;font-size:14px;color:var(--k)}
 .chip.on{background:var(--o);border-color:var(--o);font-weight:700}
-.stat{display:flex;gap:10px;margin:10px 0}.stat div{flex:1;background:var(--g);border-radius:12px;padding:10px;text-align:center}
-.stat b{display:block;font-size:24px}.stat span{font-size:12px;color:var(--mut)}
+.stat{display:flex;gap:8px;margin:10px 0}.stat div{flex:1;background:var(--g);border-radius:12px;padding:10px 4px;text-align:center}
+.stat b{display:block;font-size:22px}.stat span{font-size:11px;color:var(--mut)}
 .stop{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}
-.num{width:30px;height:30px;border-radius:50%;background:var(--k);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
-.num.done{background:var(--ok)}.num.skip{background:#bbb}
+.num{width:30px;height:30px;border-radius:50%;background:var(--k);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
+.num.done{background:var(--ok)}.num.skip{background:#bbb}.num.due{background:var(--o);color:var(--k)}
 .stop .nm{font-weight:700}.stop .ad{font-size:13px;color:var(--mut)}
-.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--g);margin-top:4px}
-.tag.lead{background:#fff0e5;color:#a64500}.tag.sold{background:#e6f4ea;color:var(--ok)}.tag.no{background:#fde8e8;color:var(--bad)}
-#map{height:260px;border-radius:14px;border:1.5px solid var(--line);margin:10px 0;z-index:1}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--g);margin:4px 4px 0 0}
+.tag.lead{background:#fff0e5;color:#a64500}.tag.sold{background:#e6f4ea;color:var(--ok)}.tag.no{background:#fde8e8;color:var(--bad)}.tag.open{background:#e6f4ea;color:var(--ok)}
+#map,#heat{height:260px;border-radius:14px;border:1.5px solid var(--line);margin:10px 0;z-index:1}
+#heat{height:380px}
 .pin{background:var(--k);color:#fff;border:2px solid #fff;border-radius:50%;width:26px;height:26px;display:grid;place-items:center;font:700 12px/1 sans-serif;box-shadow:0 1px 4px rgba(0,0,0,.4)}
-.pin.done{background:var(--ok)}.pin.me{background:var(--o);color:var(--k)}
+.pin.done{background:var(--ok)}.pin.me{background:var(--o);color:var(--k)}.pin.visit{background:#7a3cff}
 .note{font-size:13px;color:var(--mut)}
-.saved{font-size:12px;color:var(--ok);height:16px;margin-top:6px}
+.saved{font-size:12px;color:var(--ok);min-height:16px;margin-top:6px}
 .hint{background:#fff7f0;border-left:4px solid var(--o);padding:10px 12px;border-radius:8px;font-size:14px;margin:10px 0}
-.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:1000}
+.script{background:var(--g);border-radius:10px;padding:10px 12px;font-size:14px;margin:8px 0}
+details{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;margin:10px 0}
+summary{font-weight:700;cursor:pointer}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:1000;display:none}
 .bar .in{max-width:560px;margin:0 auto;display:flex;gap:10px}.bar .btn{margin:0}
+.prog{height:10px;background:var(--g);border-radius:99px;overflow:hidden;margin:6px 0}.prog i{display:block;height:100%;background:var(--o)}
 pre{white-space:pre-wrap;background:var(--g);padding:12px;border-radius:10px;font-size:13px;max-height:320px;overflow:auto}
 .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--k);color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;transition:.25s;z-index:2000;pointer-events:none;max-width:90%;text-align:center}
 .toast.on{opacity:1}
@@ -64,6 +73,9 @@ pre{white-space:pre-wrap;background:var(--g);padding:12px;border-radius:10px;fon
 @keyframes s{to{transform:rotate(360deg)}}
 .small{font-size:12px;color:var(--mut);margin-top:24px;text-align:center}
 .cb{display:flex;gap:10px;align-items:center;font-weight:500}.cb input{width:auto}
+.callnow{font-size:26px;font-weight:800;text-align:center;margin:6px 0}
+.big{font-size:20px;padding:18px}
+#cardImg{max-width:100%;border-radius:10px;margin-top:10px;display:none}
 </style>
 </head>
 <body>
@@ -74,50 +86,70 @@ pre{white-space:pre-wrap;background:var(--g);padding:12px;border-radius:10px;fon
 </header>
 <main>
 
+<!-- HOME -->
 <section class="screen" id="s-home">
   <h2 id="hello">Ready to prospect?</h2>
   <p class="sub" id="today"></p>
+  <div id="resumeBox"></div>
+  <b>What are we doing today?</b>
+  <div class="mode">
+    <button id="goBlitz"><span>&#128694;</span>Foot Blitz</button>
+    <button id="goCall" class="call"><span>&#128222;</span>Prospect Calling</button>
+  </div>
+  <button class="btn ghost" id="scanBtn">&#128247; Scan a business card</button>
+  <div class="card" id="goalCard"></div>
+  <div id="fuBox"></div>
+  <div class="row">
+    <button class="btn dark sm" data-go="heat">&#128293; Heat map</button>
+    <button class="btn dark sm" data-go="history">&#128203; My log</button>
+  </div>
   <div class="card">
     <b>Your location</b>
     <div id="gpsTxt" class="note">Not set yet</div>
-    <button class="btn ghost" id="gpsBtn">&#128205; Use my current location</button>
+    <button class="btn ghost sm" id="gpsBtn">&#128205; Update my location</button>
   </div>
-  <button class="btn" id="startBtn" disabled>Plan today's blitz</button>
-  <div id="resumeBox"></div>
-  <button class="btn dark" data-go="history">My territory &amp; history</button>
 </section>
 
+<!-- PLAN (shared) -->
 <section class="screen" id="s-plan">
-  <h2>Plan</h2><p class="sub">How long are you out, and where do you finish?</p>
-  <label>Time to prospect</label>
+  <h2 id="planH">Plan</h2><p class="sub" id="planSub"></p>
+  <label>How much time do you have?</label>
   <select id="hours">
     <option value="1">1 hour</option><option value="1.5">1.5 hours</option><option value="2" selected>2 hours</option>
     <option value="3">3 hours</option><option value="4">4 hours</option><option value="6">6 hours</option><option value="8">All day (8 hours)</option>
   </select>
-  <label>Getting around</label>
-  <div class="seg" id="mode"><button data-v="walking" class="on">&#128694; Walking</button><button data-v="driving">&#128663; Driving</button></div>
-  <label>Where do you finish?</label>
-  <div class="seg" id="endType"><button data-v="back" class="on">Back where I started</button><button data-v="other">Somewhere else</button></div>
-  <div id="endBox" style="display:none">
-    <label>End destination (store, address or town)</label>
-    <input id="endQ" placeholder="e.g. 123 Main St, Doylestown PA">
-    <div class="note" id="endTxt"></div>
+  <div id="blitzOnly">
+    <label>Getting around</label>
+    <div class="seg" id="mode"><button data-v="walking" class="on">&#128694; Walking</button><button data-v="driving">&#128663; Driving</button></div>
+    <label>Where do you finish?</label>
+    <div class="seg" id="endType"><button data-v="back" class="on">Back where I started</button><button data-v="other">Somewhere else</button></div>
+    <div id="endBox" style="display:none">
+      <label>End destination (store, address or town)</label>
+      <input id="endQ" placeholder="e.g. 123 Main St, Doylestown PA">
+    </div>
   </div>
-  <button class="btn" id="planNext">Next: targets</button>
-</section>
-
-<section class="screen" id="s-targets">
-  <h2>Targets</h2><p class="sub">Who are we going after today?</p>
+  <div id="callOnly" style="display:none">
+    <label>Where should we focus the calls?</label>
+    <div class="seg" id="callArea"><button data-v="here" class="on">Around me</button><button data-v="town">A town / area</button></div>
+    <div id="townBox" style="display:none"><label>Town, zip or address</label><input id="townQ" placeholder="e.g. Doylestown PA or 18901"></div>
+    <label>How far out?</label>
+    <select id="radius"><option value="3">3 miles</option><option value="5" selected>5 miles</option><option value="10">10 miles</option><option value="20">20 miles</option></select>
+  </div>
   <label>Vertical</label><select id="vert"></select>
+  <label>Company size you're going after</label>
+  <select id="size"><option>Any size</option><option>1–5 employees</option><option>6–20 employees</option><option>21–50 employees</option><option>50+ employees</option></select>
   <label>Hunting for</label><select id="hunt"></select>
-  <label>How many businesses? <span class="note" id="suggestTxt"></span></label>
-  <input id="count" type="number" min="1" max="40" inputmode="numeric">
-  <label class="cb"><input type="checkbox" id="skipChains" checked> Skip big national chains (SMB focus)</label>
-  <label class="cb"><input type="checkbox" id="skipVisited" checked> Skip places I visited in the last <span id="skipDaysTxt">30</span> days</label>
-  <button class="btn" id="buildBtn">Build my route</button>
+  <label><span id="countLbl">How many businesses?</span> <span class="note" id="suggestTxt"></span></label>
+  <input id="count" type="number" min="1" max="120" inputmode="numeric">
+  <label class="cb"><input type="checkbox" id="skipChains" checked> Skip big national chains (small business only)</label>
+  <label class="cb"><input type="checkbox" id="skipVisited" checked> Skip places I've worked in the last <span id="skipDaysTxt">30</span> days</label>
+  <label class="cb" id="openWrap" style="display:none"><input type="checkbox" id="openNow" checked> Only businesses open right now (when hours are listed)</label>
+  <div class="hint" id="bestTime"></div>
+  <button class="btn" id="buildBtn">Build my list</button>
   <div id="buildMsg" class="note" style="margin-top:10px"></div>
 </section>
 
+<!-- ROUTE (blitz) -->
 <section class="screen" id="s-route">
   <h2 id="routeH">Today's route</h2><p class="sub" id="routeSub"></p>
   <div id="map"></div>
@@ -125,9 +157,10 @@ pre{white-space:pre-wrap;background:var(--g);padding:12px;border-radius:10px;fon
   <div class="note" id="fullRouteNote" style="margin-top:6px"></div>
   <div id="stopList"></div>
   <button class="btn ghost" id="addStopBtn">+ Add a business I found</button>
-  <button class="btn dark" id="toRecap">Finish &amp; recap</button>
+  <button class="btn dark" id="toRecapB">Finish &amp; recap</button>
 </section>
 
+<!-- STOP (blitz) -->
 <section class="screen" id="s-stop">
   <div class="note" id="stopIdx"></div>
   <h2 id="stopName"></h2>
@@ -138,65 +171,110 @@ pre{white-space:pre-wrap;background:var(--g);padding:12px;border-radius:10px;fon
   </div>
   <div class="hint" id="pitchHint"></div>
   <label>Outcome</label><div class="chips" id="outcome"></div>
-  <label>Decision maker</label><input id="f-contact" data-f="contact" placeholder="Name / title">
-  <div class="row">
-    <div><label>Phone</label><input id="f-phone" data-f="phone" type="tel" inputmode="tel"></div>
-    <div><label>Email</label><input id="f-email" data-f="email" type="email" inputmode="email"></div>
-  </div>
-  <div class="row">
-    <div><label>Wireless carrier now</label><select id="f-carrier" data-f="carrier"></select></div>
-    <div><label>Internet now</label><select id="f-isp" data-f="isp"></select></div>
-  </div>
-  <div class="row">
-    <div><label># of lines</label><input id="f-lines" data-f="lines" type="number" inputmode="numeric" min="0"></div>
-    <div><label>Contract / pain point</label><input id="f-pain" data-f="pain" placeholder="e.g. up in March"></div>
-  </div>
-  <label>Interested in</label><div class="chips" id="interest"></div>
-  <label>Next steps</label><input id="f-next" data-f="next" placeholder="e.g. Send quote Fri, call back 12/7">
-  <label>Notes</label><textarea id="f-notes" data-f="notes" placeholder="What happened at this stop?"></textarea>
+  <div id="fuWrapB" style="display:none"><label>Follow up on</label><input type="date" id="fuDateB"><button class="btn ghost sm" id="calB">&#128197; Add reminder to my calendar</button></div>
+  <div id="formB"></div>
   <div class="saved" id="savedTxt"></div>
 </section>
 
+<!-- DIAL (call) -->
+<section class="screen" id="s-dial">
+  <div class="prog"><i id="dialProg"></i></div>
+  <div class="note" id="dialIdx"></div>
+  <h2 id="dName"></h2>
+  <p class="sub" id="dInfo"></p>
+  <div class="callnow" id="dPhone"></div>
+  <a class="btn big" id="dCall">&#128222; Call now</a>
+  <div class="note" id="dTimer" style="text-align:center;margin-top:6px"></div>
+  <details open><summary>&#128172; Talk track</summary><div id="dScript"></div></details>
+  <details><summary>&#128737;&#65039; Objections</summary><div id="dObj"></div></details>
+  <details><summary>&#128233; Voicemail script</summary><div class="script" id="dVm"></div></details>
+  <label>How did it go?</label><div class="chips" id="cOutcome"></div>
+  <div id="fuWrapC" style="display:none"><label id="fuLblC">Follow up on</label><input type="datetime-local" id="fuDateC"><button class="btn ghost sm" id="calC">&#128197; Add reminder to my calendar</button></div>
+  <div class="row" id="msgRow" style="display:none">
+    <a class="btn ghost sm" id="smsBtn">&#128172; Text follow-up</a>
+    <a class="btn ghost sm" id="mailBtnC">&#9993;&#65039; Email follow-up</a>
+  </div>
+  <div id="formC"></div>
+  <div class="saved" id="savedTxtC"></div>
+</section>
+
+<!-- CALL LIST -->
+<section class="screen" id="s-calllist">
+  <h2 id="clH">Call list</h2><p class="sub" id="clSub"></p>
+  <div id="clList"></div>
+  <button class="btn ghost" id="addCallBtn">+ Add a number</button>
+  <button class="btn dark" id="toRecapC">Finish &amp; recap</button>
+</section>
+
+<!-- SCAN -->
+<section class="screen" id="s-scan">
+  <h2>Scan a business card</h2><p class="sub">Take a photo. The card is read on your phone and nothing is uploaded.</p>
+  <label class="btn" for="cardFile" style="margin-top:0">&#128247; Take photo of card</label>
+  <input type="file" id="cardFile" accept="image/*" capture="environment" style="display:none">
+  <img id="cardImg" alt="">
+  <div id="ocrMsg" class="note" style="margin-top:8px"></div>
+  <div id="cardForm" style="display:none">
+    <label>Business</label><input id="k-biz">
+    <div class="row"><div><label>Contact</label><input id="k-name"></div><div><label>Title</label><input id="k-title"></div></div>
+    <div class="row"><div><label>Phone</label><input id="k-phone" type="tel"></div><div><label>Email</label><input id="k-email" type="email"></div></div>
+    <label>Website</label><input id="k-web">
+    <label>Address</label><input id="k-addr">
+    <label>Notes</label><textarea id="k-notes" style="min-height:70px"></textarea>
+    <label>Follow up on</label><input type="date" id="k-due">
+    <div id="cardActions"></div>
+  </div>
+</section>
+
+<!-- RECAP -->
 <section class="screen" id="s-recap">
   <h2>Daily recap</h2><p class="sub" id="recapSub"></p>
-  <div class="stat"><div><b id="r-visits">0</b><span>Visited</span></div><div><b id="r-leads">0</b><span>Leads</span></div><div><b id="r-sold">0</b><span>Sold</span></div></div>
+  <div class="stat" id="recapStats"></div>
   <label>Anything to add for your managers?</label>
   <textarea id="recapAdd" placeholder="Wins, blockers, what you'd do differently…" style="min-height:80px"></textarea>
   <a class="btn" id="mailBtn">&#9993;&#65039; Email recap</a>
   <div class="note" id="mailNote" style="margin-top:6px"></div>
   <button class="btn ghost" id="copyRecap">Copy full recap</button>
-  <button class="btn ghost" id="copyLeadsA">Copy leads for Foot Blitz Log (columns B–E)</button>
-  <button class="btn ghost" id="copyLeadsB">Copy dates &amp; notes for the Log (columns N–Q)</button>
-  <div class="note" style="margin-top:6px">Paste the first copy into column B and the second into column N on the same rows of your tab. Add units in F–L yourself.</div>
   <pre id="recapPre"></pre>
-  <button class="btn dark" id="endDay">End day &amp; save to history</button>
+  <button class="btn dark" id="endDay">End session &amp; save to my log</button>
 </section>
 
+<!-- HISTORY / LOG -->
 <section class="screen" id="s-history">
-  <h2>My territory</h2><p class="sub">Everything is saved on this phone.</p>
-  <div class="stat"><div><b id="h-days">0</b><span>Blitz days</span></div><div><b id="h-visits">0</b><span>Businesses visited</span></div><div><b id="h-leads">0</b><span>Leads</span></div></div>
-  <div class="card o"><b>Suggested next</b><div id="suggestTxt2" class="note"></div></div>
+  <h2>My log</h2><p class="sub">Every call and stop, time-stamped. Saved on this phone.</p>
+  <div class="seg" id="logTab"><button data-v="call" class="on">&#128222; Call Log</button><button data-v="blitz">&#128694; Foot Blitz Log</button></div>
+  <div class="stat" id="logStats"></div>
   <div id="histList"></div>
-  <button class="btn ghost" id="exportBtn">Export my data (backup)</button>
+  <button class="btn ghost" id="exportBtn">Back up my data</button>
   <button class="btn ghost" id="importBtn">Restore from backup</button>
   <input type="file" id="importFile" accept="application/json,.json" style="display:none">
 </section>
 
+<!-- HEAT -->
+<section class="screen" id="s-heat">
+  <h2>My territory heat map</h2><p class="sub">Orange = stops you walked. Black = calls. Bigger and darker = worked more.</p>
+  <div id="heat"></div>
+  <div class="card o"><b>Suggested next</b><div id="heatSug" class="note"></div></div>
+</section>
+
+<!-- SETTINGS -->
 <section class="screen" id="s-settings">
   <h2>Settings</h2><p class="sub">Set these once on each phone.</p>
   <label>Your name</label><input id="set-name" placeholder="First Last">
   <label>Your email (the recap comes from you and copies you)</label><input id="set-email" type="email" inputmode="email">
-  <label>Your director</label><input id="set-dir" placeholder="As it appears on the Foot Blitz Log">
-  <label>Your store / location</label><input id="set-store" placeholder="As it appears on the Foot Blitz Log">
+  <label>Your director</label><input id="set-dir">
+  <label>Your store / location</label><input id="set-store">
   <label>Recap CC (comma separated)</label><input id="set-cc">
+  <label>Daily dial goal</label><input id="set-goal" type="number" min="1" max="300" inputmode="numeric">
   <label>Directions open in</label>
   <select id="set-maps"><option value="auto">Match my phone (Apple Maps on iPhone, Google Maps elsewhere)</option><option value="apple">Apple Maps</option><option value="google">Google Maps</option></select>
-  <label>Skip businesses visited within (days)</label><input id="set-days" type="number" min="0" max="365" inputmode="numeric">
+  <label>Skip businesses worked within (days)</label><input id="set-days" type="number" min="0" max="365" inputmode="numeric">
   <button class="btn" id="saveSet">Save</button>
-  <p class="small">True Prospect v1 · Business data &copy; OpenStreetMap contributors</p>
+  <h3>Do-not-call list</h3><div id="dncList" class="note"></div>
+  <p class="small">True Prospect v2 · Business data &copy; OpenStreetMap contributors</p>
 </section>
 
 </main>
+<div class="bar" id="bar"><div class="in" id="barIn"></div></div>
 <div class="toast" id="toast"></div>
 
 <script src="config.js"></script>
@@ -204,6 +282,7 @@ pre{white-space:pre-wrap;background:var(--g);padding:12px;border-radius:10px;fon
 <script>
 (()=>{
 "use strict";
+/* ================= CONSTANTS ================= */
 const VERTICALS={
  "All verticals":['["shop"]','["office"]','["craft"]','["healthcare"]','["amenity"~"^(restaurant|cafe|fast_food|bar|pub|dentist|doctors|clinic|veterinary|car_wash|childcare)$"]','["leisure"~"^(fitness_centre|sports_centre)$"]'],
  "Restaurants & food":['["amenity"~"^(restaurant|cafe|fast_food|bar|pub|ice_cream|food_court)$"]','["shop"~"^(bakery|deli|butcher|confectionery|pastry|seafood)$"]'],
@@ -217,266 +296,463 @@ const VERTICALS={
  "Real estate":['["office"~"^(estate_agent|property_management)$"]'],
  "Logistics & delivery":['["office"~"^(logistics|courier|moving_company|transport)$"]','["shop"="storage_rental"]','["industrial"]']
 };
-const HUNT={
- "Any opportunity":"Open with: \"Who handles your phones and internet here?\" Find the decision maker and the best time to come back.",
- "On another carrier (AT&T, T-Mobile)":"Ask who they're with and when they're up. Lead with the Switching Allowance and holiday new-line pricing on the deal sheet.",
- "No business internet / on cable":"Ask what they pay for internet and what happens when it goes down. Lead with Business Internet and the free router offer.",
- "Needs desk phones (One Talk)":"Ask how calls reach the owner after hours. Lead with One Talk: the business number on every cell, plus auto-receptionist.",
- "Existing Verizon: upgrades & add-a-line":"Check for upgrade-eligible lines and add-a-line offers. Offer a free account review.",
- "Fleet & vehicles":"Ask how many vehicles and who drives them. Lead with Jetpacks or tablets for the trucks and add-a-line pricing."
+const BEST={
+ "All verticals":"Mid-morning (9:30–11:30) and mid-afternoon (2–4) usually reach owners best. Avoid the lunch rush.",
+ "Restaurants & food":"Call or visit 2–4pm, between lunch and dinner. Never 11:30–1:30 or after 5.",
+ "Contractors & trades":"Catch owners early (7–8:30am) before job sites, or after 4pm.",
+ "Medical & dental":"Ask for the office manager. 12–1pm (lunch) or right after 4pm work best.",
+ "Auto repair & dealers":"Mid-morning (9:30–11) after drop-offs, or 3–4pm before pickups.",
+ "Retail shops":"Weekday mornings right after opening. Avoid weekends and lunch.",
+ "Salons & beauty":"Early in the day before clients, or Monday/Tuesday when many are slower.",
+ "Professional services":"Tuesday–Thursday, 9–11am. Avoid Monday mornings and Friday afternoons.",
+ "Fitness & gyms":"Mid-morning or early afternoon, between class rushes.",
+ "Real estate":"Late morning on weekdays. Agents are often out on weekends.",
+ "Logistics & delivery":"Early (7–9am) when dispatch is in, or after 3pm."
 };
+const HUNT={
+ "Any opportunity":{open:"Hi, this is {rep} with Your Wireless, an authorized Verizon retailer here in {area}. Quick question: who handles the phones and internet for the business?",ask:["Who are you with for cell service today?","What do you use for internet at the shop, and what happens when it goes down?","How do customers reach you after hours?"],pitch:"We've got holiday business pricing right now. I'd love 10 minutes to show you what you'd save."},
+ "On another carrier (AT&T, T-Mobile)":{open:"Hi, this is {rep} with Your Wireless, a Verizon retailer here in {area}. We're helping local businesses who are with AT&T or T-Mobile see what switching would save. Who handles that for you?",ask:["Who are you with now, and how many lines?","When is your contract or device payoff up?","Any dead spots or dropped calls that bug you?"],pitch:"Verizon will help pay off your current phones and we have holiday new-line pricing. Can I put a side-by-side together for you?"},
+ "No business internet / on cable":{open:"Hi, this is {rep} with Your Wireless, a Verizon retailer here in {area}. We're setting up local businesses with Verizon Business Internet. Who handles your internet?",ask:["What are you paying for internet now?","What happens to your card reader when the internet goes down?","Would a backup connection help?"],pitch:"Business Internet starts at $35 a month with a Verizon line, and the router is discounted right now. Want me to check your address?"},
+ "Needs desk phones (One Talk)":{open:"Hi, this is {rep} with Your Wireless, a Verizon retailer here in {area}. Quick question: how do calls to your main business number reach you when you're out?",ask:["Do you have a desk phone or landline today, and who's it with?","Do calls ring to your cell when you're out?","Would an auto-receptionist help?"],pitch:"One Talk puts your business number on your desk phone and your cell, with an auto-receptionist. There's a $40 credit on desk phones right now."},
+ "Existing Verizon: upgrades & add-a-line":{open:"Hi, this is {rep} with Your Wireless, your local Verizon retailer. I'm reaching out to business customers about holiday upgrade and add-a-line offers. Do you have a minute?",ask:["Anyone on the team due for an upgrade?","Do you need another line, a tablet, or a hotspot?","When did someone last review your plan?"],pitch:"I'd be happy to do a free account review and make sure you're on the best business plan."},
+ "Fleet & vehicles":{open:"Hi, this is {rep} with Your Wireless, a Verizon retailer here in {area}. We help local businesses with trucks and crews stay connected. Who handles phones for your drivers?",ask:["How many vehicles and drivers do you have?","How do your crews stay connected on the road?","Do you track vehicles today?"],pitch:"We can set up your crews with lines, hotspots or tablets, plus Verizon Connect for tracking. Want me to put options together?"}
+};
+const OBJ=[["\"We're under contract.\"","Totally fair. When is it up? Verizon has payoff help for business lines, so let's see if switching early still saves you money."],
+["\"I'm happy with who I have.\"","Glad to hear it. Most of my customers said the same thing until they saw a side-by-side. Can I send you one so you have it at renewal?"],
+["\"Send me something.\"","Happy to. What's the best email, and what matters most to you: price, coverage, or internet backup? Then I'll make it specific."],
+["\"I'm too busy.\"","I'll be quick. When is a better 5 minutes this week? I'll put it on my calendar."],
+["\"It's too expensive.\"","What are you paying today? With the holiday pricing and Joint Offer, many businesses pay less with Verizon. Let me check."],
+["\"Talk to the owner.\"","No problem. What's the owner's name, and when is the best time to reach them?"]];
+const VM="Hi, this is {rep} with Your Wireless, a Verizon retailer here in {area}. I'm calling local businesses about holiday business pricing on phones and internet. Call me back at {phone}. Again, {rep} at {phone}. Thanks!";
 const CARRIERS=["Unknown","Verizon","AT&T","T-Mobile","Spectrum Mobile","Xfinity Mobile","Other"];
 const ISPS=["Unknown","None","Comcast / Xfinity","Verizon Fios","Verizon 5G/LTE","Spectrum","Optimum","AT&T","T-Mobile Home Internet","Other"];
-const OUTCOMES=[["Talked to owner/DM",""],["Left info",""],["Come back later",""],["Lead - follow up","lead"],["Sold","sold"],["Not interested","no"],["Closed / gone","no"]];
+const SIZES=["Unknown","1–5","6–20","21–50","50+"];
 const INTEREST=["Smartphone","FWA","Business Internet","Upgrade","One Talk","Jetpack","Tablet","Watch"];
+const B_OUT=[["Talked to owner/DM",""],["Left info",""],["Come back later",""],["Wants follow-up","lead"],["Lead - follow up","lead"],["Sold","sold"],["Not interested","no"],["Closed / gone","no"]];
+const C_OUT=[["No answer",""],["Left voicemail",""],["Gatekeeper",""],["Conversation",""],["Wants follow-up","lead"],["Wants a visit","lead"],["Appointment set","lead"],["Sold","sold"],["Not interested","no"],["Do not call","no"],["Wrong number","no"]];
+const CONNECT=new Set(["Conversation","Wants follow-up","Wants a visit","Appointment set","Sold","Not interested","Do not call","Gatekeeper"]);
 const DEFAULT_CC=((window.TP_CONFIG&&window.TP_CONFIG.cc)||"").trim();
 const OVERPASS=["https://overpass-api.de/api/interpreter","https://overpass.kumi.systems/api/interpreter","https://maps.mail.ru/osm/tools/overpass/api/interpreter"];
 const KEY="trueProspect.v1";
+const TESS="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js";
 
+/* ================= STATE ================= */
 let S=load();
-function blank(){return{settings:{name:"",email:"",dir:"",store:"",cc:DEFAULT_CC,maps:"auto",days:30},loc:null,session:null,history:[],visited:{}};}
-function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.settings){const b=blank();b.settings=Object.assign(b.settings,s.settings);if(!b.settings.cc)b.settings.cc=DEFAULT_CC;return Object.assign(b,s,{settings:b.settings});}}catch(e){}return blank();}
+function blank(){return{settings:{name:"",email:"",dir:"",store:"",cc:DEFAULT_CC,maps:"auto",days:30,goal:50},loc:null,session:null,history:[],visited:{},followups:[],dnc:{},visitQueue:[],calls:[]};}
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.settings){const b=blank();const st=Object.assign(b.settings,s.settings);if(!st.cc)st.cc=DEFAULT_CC;const o=Object.assign(b,s,{settings:st});["followups","history","visitQueue","calls"].forEach(k=>{if(!Array.isArray(o[k]))o[k]=[]});["dnc","visited"].forEach(k=>{if(!o[k]||typeof o[k]!=="object")o[k]={}});if(o.session&&!o.session.kind)o.session.kind="blitz";o.history.forEach(h=>{if(!h.kind)h.kind="blitz"});return o;}}catch(e){}return blank();}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){toast("Couldn't save on this phone");}}
 
+/* ================= HELPERS ================= */
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function toast(t){const e=$("toast");e.textContent=t;e.classList.add("on");clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove("on"),2200);}
 function dist(a,b){const R=6371e3,r=x=>x*Math.PI/180,dLa=r(b.lat-a.lat),dLo=r(b.lon-a.lon);const h=Math.sin(dLa/2)**2+Math.cos(r(a.lat))*Math.cos(r(b.lat))*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
 const mi=m=>(m/1609.34).toFixed(m<1609?2:1)+" mi";
 const fmtTime=t=>new Date(t).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"});
+const fmtDT=t=>new Date(t).toLocaleString("en-US",{month:"numeric",day:"numeric",hour:"numeric",minute:"2-digit"});
+const ymd=d=>{const x=new Date(d);return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0");};
+const todayYMD=()=>ymd(Date.now());
+function addBizDays(n){const d=new Date();let k=0;while(k<n){d.setDate(d.getDate()+1);if(d.getDay()%6)k++;}return d;}
+const digits=p=>String(p||"").replace(/[^\d]/g,"").replace(/^1(?=\d{10}$)/,"");
+const prettyPhone=p=>{const d=digits(p);return d.length===10?`(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`:String(p||"");};
 const isApple=()=>/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
 function mapsApp(){const m=S.settings.maps;return m==="auto"?(isApple()?"apple":"google"):m;}
-function navUrl(dest,from){const mode=(S.session&&S.session.mode)||"walking";
- if(mapsApp()==="apple")return `https://maps.apple.com/?${from?`saddr=${from.lat},${from.lon}&`:""}daddr=${dest.lat},${dest.lon}&dirflg=${mode==="walking"?"w":"d"}`;
- return `https://www.google.com/maps/dir/?api=1${from?`&origin=${from.lat},${from.lon}`:""}&destination=${dest.lat},${dest.lon}&travelmode=${mode}`;}
+function navUrl(dest,mode){mode=mode||"walking";
+ if(mapsApp()==="apple")return `https://maps.apple.com/?daddr=${dest.lat},${dest.lon}&dirflg=${mode==="walking"?"w":"d"}`;
+ return `https://www.google.com/maps/dir/?api=1&destination=${dest.lat},${dest.lon}&travelmode=${mode}`;}
 async function copy(t){try{await navigator.clipboard.writeText(t);}catch(e){const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();}toast("Copied");}
 function fillSelect(el,arr,val){el.innerHTML=arr.map(v=>`<option${v===val?" selected":""}>${esc(v)}</option>`).join("");}
+const rep=()=>S.settings.name||"your Verizon rep";
+const fill=t=>t.replace(/\{rep\}/g,rep()).replace(/\{area\}/g,(S.session&&S.session.areaName)||"the area").replace(/\{phone\}/g,"[your number]");
+function ics(title,whenMs,desc,mins){const p=n=>String(n).padStart(2,"0");const f=d=>`${d.getUTCFullYear()}${p(d.getUTCMonth()+1)}${p(d.getUTCDate())}T${p(d.getUTCHours())}${p(d.getUTCMinutes())}00Z`;
+ const s=new Date(whenMs),e=new Date(whenMs+(mins||15)*60000);const clean=x=>String(x||"").replace(/[\r\n]+/g,"\\n").replace(/[,;]/g,m=>"\\"+m);
+ const body=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//True Prospect//EN","BEGIN:VEVENT",`UID:${Date.now()}@trueprospect`,`DTSTAMP:${f(new Date())}`,`DTSTART:${f(s)}`,`DTEND:${f(e)}`,`SUMMARY:${clean(title)}`,`DESCRIPTION:${clean(desc)}`,"BEGIN:VALARM","TRIGGER:-PT10M","ACTION:DISPLAY",`DESCRIPTION:${clean(title)}`,"END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
+ const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([body],{type:"text/calendar"}));a.download="follow-up.ics";document.body.appendChild(a);a.click();a.remove();toast("Opening your calendar…");}
+function addFollowup(o){const ex=S.followups.find(f=>!f.done&&f.key===o.key);if(ex){Object.assign(ex,o);}else S.followups.push(Object.assign({id:"f"+Date.now()+Math.random().toString(36).slice(2,6),done:false,created:Date.now()},o));save();}
+function logCall(entry){S.calls.push(entry);save();}
 
-const TITLES={home:"True Prospect",plan:"Plan",targets:"Targets",route:"Route",stop:"Stop",recap:"Recap",history:"Territory",settings:"Settings"};
-const BACK={plan:"home",targets:"plan",route:"home",stop:"route",recap:"route",history:"home",settings:"home"};
-let cur="home",curStop=-1;
+/* OSM opening_hours (common formats) */
+const DAYS=["Su","Mo","Tu","We","Th","Fr","Sa"];
+function openNow(oh,now){if(!oh)return null;now=now||new Date();oh=oh.trim();if(/^24\/7$/.test(oh))return true;
+ try{const d=now.getDay(),mins=now.getHours()*60+now.getMinutes();let res=null,parsed=false;
+  for(const rule of oh.split(";")){const r=rule.trim();if(!r||/PH|SH|week|[0-9]{4}|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec/.test(r))continue;
+   const m=r.match(/^((?:[A-Z][a-z](?:-[A-Z][a-z])?,?\s*)+)?\s*(.*)$/);let days=null;
+   if(m[1]){days=new Set();m[1].split(",").map(x=>x.trim()).filter(Boolean).forEach(x=>{const [a,b]=x.split("-");const ia=DAYS.indexOf(a),ib=b?DAYS.indexOf(b):ia;if(ia<0||ib<0)return;let i=ia;for(let k=0;k<7;k++){days.add(i);if(i===ib)break;i=(i+1)%7;}});}
+   const t=m[2].trim();if(!/^\d|off|closed/i.test(t))continue;parsed=true;if(days&&!days.has(d))continue;
+   if(/^off|closed$/i.test(t)){res=false;continue;}
+   let ok=false;for(const span of t.split(",")){const q=span.trim().match(/^(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/);if(!q)continue;const a=+q[1]*60+ +q[2];let b=+q[3]*60+ +q[4];if(b<=a)b+=1440;if((mins>=a&&mins<b)||(mins+1440>=a&&mins+1440<b))ok=true;}
+   res=ok;}
+  return res===null&&parsed?false:res;}catch(e){return null;}}
+
+/* ================= NAV ================= */
+const TITLES={home:"True Prospect",plan:"Plan",route:"Route",stop:"Stop",dial:"Calling",calllist:"Call list",scan:"Scan card",recap:"Recap",history:"My log",heat:"Heat map",settings:"Settings"};
+const BACK={plan:"home",route:"home",stop:"route",dial:"calllist",calllist:"home",scan:"home",recap:"home",history:"home",heat:"home",settings:"home"};
+let cur="home",curStop=-1,curCall=-1;
+function setBar(html){const b=$("bar");if(!html){b.style.display="none";return;}$("barIn").innerHTML=html;b.style.display="block";}
 function go(n){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on",s.id==="s-"+n));cur=n;
  $("title").textContent=TITLES[n];$("back").style.display=n==="home"?"none":"";$("gear").style.display=n==="settings"?"none":"";
- const b=$("stopBar");if(b)b.style.display=n==="stop"?"":"none";
- window.scrollTo(0,0);const r={home:renderHome,targets:renderTargets,route:renderRoute,recap:renderRecap,history:renderHistory,settings:renderSettings}[n];if(r)r();}
-$("back").onclick=()=>go(BACK[cur]||"home");
+ if(n!=="stop"&&n!=="dial")setBar("");window.scrollTo(0,0);
+ const r={home:renderHome,route:renderRoute,calllist:renderCallList,recap:renderRecap,history:renderHistory,heat:renderHeat,settings:renderSettings,scan:renderScan}[n];if(r)r();}
+$("back").onclick=()=>{if(cur==="recap"&&S.session)return go(S.session.kind==="call"?"calllist":"route");go(BACK[cur]||"home");};
 $("gear").onclick=()=>go("settings");
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
 function seg(id,cb){const el=$(id);el.querySelectorAll("button").forEach(b=>b.onclick=()=>{el.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));if(cb)cb(b.dataset.v);});}
 const segVal=id=>$(id).querySelector("button.on").dataset.v;
 
-/* HOME */
+/* ================= HOME ================= */
+function dueFollowups(){const t=todayYMD();return S.followups.filter(f=>!f.done&&f.due<=t).sort((a,b)=>a.due.localeCompare(b.due));}
+function todaysDials(){const t=todayYMD();return S.calls.filter(c=>ymd(c.start)===t).length;}
 function renderHome(){
  $("hello").textContent=S.settings.name?`Ready to prospect, ${S.settings.name.split(" ")[0]}?`:"Ready to prospect?";
  $("today").textContent=new Date().toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
- if(S.loc)$("gpsTxt").innerHTML=`${esc(S.loc.label||`${S.loc.lat.toFixed(5)}, ${S.loc.lon.toFixed(5)}`)}<br><span class="note">Updated ${fmtTime(S.loc.t)}</span>`;
- $("startBtn").disabled=!S.loc;
+ if(S.loc)$("gpsTxt").innerHTML=`${esc(S.loc.label||`${S.loc.lat.toFixed(5)}, ${S.loc.lon.toFixed(5)}`)} <span class="note">· ${fmtTime(S.loc.t)}</span>`;
  const s=S.session;
- $("resumeBox").innerHTML=s?`<div class="card o"><b>Blitz in progress</b><div class="note">${esc(s.vertical)} · ${s.stops.filter(x=>x.outcome).length} of ${s.stops.length} stops logged</div><button class="btn" id="resumeBtn">Resume route</button></div>`:"";
- if(s)$("resumeBtn").onclick=()=>go("route");
+ if(s){const done=s.kind==="call"?s.items.filter(x=>x.outcome).length:s.stops.filter(x=>x.outcome).length;const tot=s.kind==="call"?s.items.length:s.stops.length;
+  $("resumeBox").innerHTML=`<div class="card o"><b>${s.kind==="call"?"&#128222; Calling":"&#128694; Foot blitz"} in progress</b><div class="note">${esc(s.vertical)} · ${done} of ${tot} done</div><button class="btn" id="resumeBtn">Resume</button></div>`;
+  $("resumeBtn").onclick=()=>go(s.kind==="call"?"calllist":"route");}else $("resumeBox").innerHTML="";
+ const n=todaysDials(),g=S.settings.goal||50;
+ $("goalCard").innerHTML=`<b>Today's dials: ${n} / ${g}</b><div class="prog"><i style="width:${Math.min(100,100*n/g)}%"></i></div><div class="note">${n>=g?"Goal hit. Nice work! &#127881;":`${g-n} to go`}</div>`;
+ const due=dueFollowups();
+ $("fuBox").innerHTML=`<div class="card"><b>&#9200; Follow-ups due (${due.length})</b>${due.length?due.slice(0,8).map(f=>`<div class="stop" data-f="${f.id}"><div class="num due">!</div><div style="flex:1"><div class="nm">${esc(f.name)}</div><div class="ad">${esc(f.why||"Follow up")} · due ${new Date(f.due+"T12:00").toLocaleDateString("en-US",{month:"numeric",day:"numeric"})}${f.phone?" · "+esc(prettyPhone(f.phone)):""}</div></div></div>`).join(""):`<div class="note">Nothing due. You're caught up.</div>`}${due.length>8?`<div class="note">+${due.length-8} more in My log</div>`:""}</div>`;
+ $("fuBox").querySelectorAll("[data-f]").forEach(el=>el.onclick=()=>openFollowup(el.dataset.f));
 }
-$("gpsBtn").onclick=()=>{
- if(!navigator.geolocation)return toast("Location isn't available on this device");
- $("gpsTxt").innerHTML='<span class="spin"></span> Finding you…';
- navigator.geolocation.getCurrentPosition(async p=>{
-  S.loc={lat:p.coords.latitude,lon:p.coords.longitude,acc:p.coords.accuracy,t:Date.now()};save();renderHome();
-  try{const r=await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=18&lat=${S.loc.lat}&lon=${S.loc.lon}`);const j=await r.json();const a=j.address||{};
-   S.loc.label=[[a.house_number,a.road].filter(Boolean).join(" "),a.city||a.town||a.village||a.hamlet||a.suburb,a.state].filter(Boolean).join(", ");save();renderHome();}catch(e){}
- },e=>{$("gpsTxt").textContent=e.code===1?"Location permission is off. Allow location for your browser in your phone's Settings, then try again.":"Couldn't get a GPS fix. Step outside and try again.";},{enableHighAccuracy:true,timeout:15000,maximumAge:60000});
-};
-$("startBtn").onclick=()=>{if(S.session){if(!confirm("You have a blitz in progress. Start a new one? The current one will be saved to history."))return;archive();}go("plan");};
+function openFollowup(id){const f=S.followups.find(x=>x.id===id);if(!f)return;
+ const html=`<div class="card o"><b>${esc(f.name)}</b><div class="note">${esc(f.why||"")}${f.notes?" · "+esc(f.notes):""}</div>
+ <div class="row">${f.phone?`<a class="btn sm" href="tel:${digits(f.phone)}" id="fuCall">&#128222; Call</a>`:""}${f.lat?`<a class="btn dark sm" target="_blank" rel="noopener" href="${navUrl(f)}">&#129517; Go</a>`:""}</div>
+ <div class="row"><button class="btn ghost sm" id="fuDone">&#10004; Done</button><button class="btn ghost sm" id="fuSnooze">+2 days</button></div></div>`;
+ const box=document.createElement("div");box.innerHTML=html;const fb=$("fuBox");fb.prepend(box);window.scrollTo(0,fb.offsetTop-60);
+ $("fuDone").onclick=()=>{f.done=true;f.doneAt=Date.now();save();renderHome();toast("Marked done");};
+ $("fuSnooze").onclick=()=>{f.due=ymd(addBizDays(2));save();renderHome();toast("Moved 2 business days");};
+ const c=$("fuCall");if(c)c.addEventListener("click",()=>{logCall({start:Date.now(),name:f.name,phone:f.phone,outcome:"Follow-up call",lat:f.lat,lon:f.lon,kind:"followup"});});}
+function getGPS(){return new Promise((res,rej)=>{if(!navigator.geolocation)return rej(new Error("no gps"));navigator.geolocation.getCurrentPosition(p=>{S.loc={lat:p.coords.latitude,lon:p.coords.longitude,t:Date.now()};save();res(S.loc);
+ fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=18&lat=${S.loc.lat}&lon=${S.loc.lon}`).then(r=>r.json()).then(j=>{const a=j.address||{};S.loc.label=[[a.house_number,a.road].filter(Boolean).join(" "),a.city||a.town||a.village||a.hamlet||a.suburb,a.state].filter(Boolean).join(", ");S.loc.town=a.city||a.town||a.village||a.suburb||"";save();if(cur==="home")renderHome();}).catch(()=>{});
+ },e=>rej(e),{enableHighAccuracy:true,timeout:15000,maximumAge:60000});});}
+$("gpsBtn").onclick=async()=>{$("gpsTxt").innerHTML='<span class="spin"></span> Finding you…';try{await getGPS();renderHome();}catch(e){$("gpsTxt").textContent=e.code===1?"Location is off. Allow location for your browser in your phone's Settings.":"Couldn't get a GPS fix. Try again.";}};
+let planKind="blitz";
+async function startPlan(kind){
+ if(S.session){if(!confirm("You have a session in progress. Start a new one? The current one will be saved to your log."))return;archive();}
+ planKind=kind;if(!S.loc){try{toast("Finding your location…");await getGPS();}catch(e){if(kind==="blitz"){toast("Turn on location to plan a blitz");return;}}}
+ go("plan");renderPlan();}
+$("goBlitz").onclick=()=>startPlan("blitz");$("goCall").onclick=()=>startPlan("call");
+$("scanBtn").onclick=()=>go("scan");
 
-/* PLAN */
-seg("mode");seg("endType",v=>$("endBox").style.display=v==="other"?"":"none");
-let endPt=null;
-$("planNext").onclick=async()=>{
- endPt=null;$("endTxt").textContent="";
- if(segVal("endType")==="other"){const q=$("endQ").value.trim();if(!q)return toast("Type where you finish");
-  $("endTxt").innerHTML='<span class="spin"></span> Looking that up…';
-  try{const vb=`${S.loc.lon-0.6},${S.loc.lat+0.6},${S.loc.lon+0.6},${S.loc.lat-0.6}`;
-   const r=await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=us&viewbox=${vb}&q=${encodeURIComponent(q)}`);const j=await r.json();
-   if(!j.length){$("endTxt").textContent="Couldn't find that. Try adding the town and state.";return;}
-   endPt={lat:+j[0].lat,lon:+j[0].lon,label:j[0].display_name.split(",").slice(0,3).join(",")};
-   $("endTxt").textContent="Finish: "+endPt.label+" ("+mi(dist(S.loc,endPt))+" away)";
-  }catch(e){$("endTxt").textContent="No connection to look that up. Try again.";return;}}
- go("targets");
-};
-
-/* TARGETS */
-fillSelect($("vert"),Object.keys(VERTICALS),"All verticals");
-fillSelect($("hunt"),Object.keys(HUNT),"Any opportunity");
-function suggestCount(){const h=+$("hours").value,w=segVal("mode")==="walking";return Math.max(3,Math.min(40,Math.round(h*(w?5:3))));}
-function renderTargets(){const n=suggestCount();$("count").value=n;$("skipDaysTxt").textContent=S.settings.days;
- $("suggestTxt").textContent=`(suggested ${n}: about ${segVal("mode")==="walking"?"12":"20"} min per stop)`;$("buildMsg").textContent="";}
-function overpassQ(vert,area){return `[out:json][timeout:25];(${VERTICALS[vert].map(s=>`nwr${s}["name"](${area});`).join("")});out center tags 400;`;}
+/* ================= PLAN ================= */
+seg("mode",()=>renderPlanHints());seg("endType",v=>$("endBox").style.display=v==="other"?"":"none");
+seg("callArea",v=>$("townBox").style.display=v==="town"?"":"none");
+fillSelect($("vert"),Object.keys(VERTICALS),"All verticals");fillSelect($("hunt"),Object.keys(HUNT),"Any opportunity");
+$("vert").onchange=renderPlanHints;$("hours").onchange=renderPlanHints;
+function suggestCount(){const h=+$("hours").value;if(planKind==="call")return Math.max(10,Math.min(120,Math.round(h*30)));const w=segVal("mode")==="walking";return Math.max(3,Math.min(40,Math.round(h*(w?5:3))));}
+function renderPlanHints(){const n=suggestCount();$("count").value=n;
+ $("suggestTxt").textContent=planKind==="call"?`(suggested ${n}: about 30 dials an hour)`:`(suggested ${n}: about ${segVal("mode")==="walking"?"12":"20"} min per stop)`;
+ $("bestTime").innerHTML=`<b>&#9200; Best time for ${esc($("vert").value)}:</b> ${esc(BEST[$("vert").value])}`;}
+function renderPlan(){const c=planKind==="call";
+ $("planH").textContent=c?"\u{1F4DE} Prospect Calling":"\u{1F6B6} Foot Blitz";$("planSub").textContent=c?"We'll build a call list of local small businesses with a listed number.":"We'll build a walking or driving route of local small businesses.";
+ $("blitzOnly").style.display=c?"none":"";$("callOnly").style.display=c?"":"none";$("openWrap").style.display=c?"":"none";
+ $("countLbl").textContent=c?"How many numbers?":"How many businesses?";$("skipDaysTxt").textContent=S.settings.days;$("buildMsg").textContent="";renderPlanHints();}
+function overpassQ(vert,area,needPhone){const ph=needPhone?'[~"^(phone|contact:phone)$"~"."]':'';return `[out:json][timeout:25];(${VERTICALS[vert].map(s=>`nwr${s}["name"]${ph}(${area});`).join("")});out center tags 600;`;}
 async function fetchOverpass(q){let last;for(const u of OVERPASS){try{const r=await fetch(u,{method:"POST",body:"data="+encodeURIComponent(q),headers:{"Content-Type":"application/x-www-form-urlencoded"}});if(r.ok)return await r.json();last=r.status;}catch(e){last="offline";}}throw new Error("The business lookup is busy right now ("+last+")");}
+async function geocode(q){const vb=S.loc?`&viewbox=${S.loc.lon-0.8},${S.loc.lat+0.8},${S.loc.lon+0.8},${S.loc.lat-0.8}`:"";const r=await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=us${vb}&q=${encodeURIComponent(q)}`);const j=await r.json();if(!j.length)return null;return{lat:+j[0].lat,lon:+j[0].lon,label:j[0].display_name.split(",").slice(0,3).join(",")};}
 const addrOf=t=>[[t["addr:housenumber"],t["addr:street"]].filter(Boolean).join(" "),t["addr:city"]].filter(Boolean).join(", ");
 const kindOf=t=>String(t.shop||t.amenity||t.office||t.craft||t.healthcare||t.leisure||t.industrial||"business").replace(/_/g," ").replace(/;.*/,"");
+function toBiz(e){const lat=e.lat??(e.center&&e.center.lat),lon=e.lon??(e.center&&e.center.lon);if(lat==null)return null;const t=e.tags||{};
+ return{id:e.type[0]+e.id,name:t.name,lat,lon,addr:addrOf(t),kind:kindOf(t),phone:t.phone||t["contact:phone"]||t["contact:mobile"]||"",web:t.website||t["contact:website"]||"",hours:t.opening_hours||"",chain:!!(t["brand:wikidata"]||t["operator:wikidata"]||t.brand),emp:t.employees||""};}
 $("buildBtn").onclick=async()=>{
- const btn=$("buildBtn");btn.disabled=true;$("buildMsg").innerHTML='<span class="spin"></span> Finding businesses near you…';
- const mode=segVal("mode"),hours=+$("hours").value,want=Math.max(1,Math.min(40,+$("count").value||suggestCount())),vert=$("vert").value,start={lat:S.loc.lat,lon:S.loc.lon};
- let area;
- if(endPt){const pad=mode==="walking"?0.006:0.02;area=`${Math.min(start.lat,endPt.lat)-pad},${Math.min(start.lon,endPt.lon)-pad},${Math.max(start.lat,endPt.lat)+pad},${Math.max(start.lon,endPt.lon)+pad}`;}
- else{const rad=mode==="walking"?Math.min(1600,500+hours*300):Math.min(12000,2500+hours*1500);area=`around:${rad},${start.lat},${start.lon}`;}
+ const btn=$("buildBtn");btn.disabled=true;$("buildMsg").innerHTML='<span class="spin"></span> Finding small businesses…';
  try{
-  const j=await fetchOverpass(overpassQ(vert,area));
-  const cutoff=Date.now()-S.settings.days*864e5;let skippedV=0,skippedC=0;const seen=new Set();let c=[];
-  for(const e of j.elements||[]){const lat=e.lat??(e.center&&e.center.lat),lon=e.lon??(e.center&&e.center.lon);if(lat==null)continue;const t=e.tags||{};
-   const id=e.type[0]+e.id,dup=t.name.toLowerCase()+"|"+Math.round(lat*1e3)+"|"+Math.round(lon*1e3);if(seen.has(dup))continue;seen.add(dup);
-   if(t.disused||t.vacant)continue;
-   if($("skipChains").checked&&(t["brand:wikidata"]||t["operator:wikidata"])){skippedC++;continue;}
-   if($("skipVisited").checked&&S.visited[id]&&S.visited[id].t>cutoff){skippedV++;continue;}
-   c.push({id,name:t.name,lat,lon,addr:addrOf(t),kind:kindOf(t),phone:t.phone||t["contact:phone"]||"",web:t.website||t["contact:website"]||""});}
-  btn.disabled=false;
-  if(!c.length){$("buildMsg").textContent=`No matching businesses found here${skippedV?` (${skippedV} already visited)`:""}. Try "All verticals", driving, or more time.`;return;}
-  c=pickAndOrder(c,start,endPt,want);
-  S.session={id:Date.now(),date:new Date().toISOString(),mode,hours,vertical:vert,hunt:$("hunt").value,start:{...start,label:S.loc.label||""},end:endPt,stops:c.map(x=>({...x,outcome:"",interest:[]})),note:"",skipped:{visited:skippedV,chains:skippedC}};
-  $("recapAdd").value="";save();go("route");
-  if(c.length<want)toast(`Only found ${c.length}. Add any you spot along the way.`);
- }catch(e){$("buildMsg").textContent=e.message+". Wait a minute and tap Build again.";btn.disabled=false;}
+  const c=planKind==="call",hours=+$("hours").value,want=Math.max(1,Math.min(120,+$("count").value||suggestCount())),vert=$("vert").value;
+  let center=S.loc?{lat:S.loc.lat,lon:S.loc.lon}:null,areaName=(S.loc&&S.loc.town)||"",endPt=null,area;
+  if(c){if(segVal("callArea")==="town"){const g=await geocode($("townQ").value.trim());if(!g)throw new Error("Couldn't find that town. Try adding the state");center={lat:g.lat,lon:g.lon};areaName=g.label.split(",")[0];}
+   if(!center)throw new Error("Turn on location or pick a town");area=`around:${Math.round(+$("radius").value*1609)},${center.lat},${center.lon}`;}
+  else{const mode=segVal("mode");if(segVal("endType")==="other"){endPt=await geocode($("endQ").value.trim());if(!endPt)throw new Error("Couldn't find your end destination");}
+   if(endPt){const pad=mode==="walking"?0.006:0.02;area=`${Math.min(center.lat,endPt.lat)-pad},${Math.min(center.lon,endPt.lon)-pad},${Math.max(center.lat,endPt.lat)+pad},${Math.max(center.lon,endPt.lon)+pad}`;}
+   else{const rad=mode==="walking"?Math.min(1600,500+hours*300):Math.min(12000,2500+hours*1500);area=`around:${rad},${center.lat},${center.lon}`;}}
+  const j=await fetchOverpass(overpassQ(vert,area,c));
+  const cutoff=Date.now()-S.settings.days*864e5,seen=new Set();let sk={visited:0,chains:0,closed:0,dnc:0},list=[];
+  for(const e of j.elements||[]){const b=toBiz(e);if(!b)continue;const dup=b.name.toLowerCase()+"|"+Math.round(b.lat*1e3)+"|"+Math.round(b.lon*1e3);if(seen.has(dup))continue;seen.add(dup);
+   if(e.tags&&(e.tags.disused||e.tags.vacant))continue;
+   if($("skipChains").checked&&b.chain){sk.chains++;continue;}
+   if($("skipVisited").checked&&S.visited[b.id]&&S.visited[b.id].t>cutoff){sk.visited++;continue;}
+   if(c){if(!digits(b.phone)){continue;}if(S.dnc[digits(b.phone)]){sk.dnc++;continue;}b.open=openNow(b.hours);if($("openNow").checked&&b.open===false){sk.closed++;continue;}}
+   list.push(b);}
+  // pinned "wants a visit" businesses go on blitz routes
+  if(!c&&S.visitQueue.length){const near=S.visitQueue.filter(v=>v.lat&&dist(v,center)<(segVal("mode")==="walking"?2500:16000));near.forEach(v=>{if(!list.find(x=>x.id===v.id))list.unshift(Object.assign({pinned:true},v));});}
+  if(!list.length)throw new Error(c?"No small businesses with a listed number found. Try All verticals, a bigger radius, or turn off \"open right now\"":"No matching businesses found here. Try All verticals, driving, or more time");
+  const base={id:Date.now(),date:new Date().toISOString(),hours,vertical:vert,hunt:$("hunt").value,size:$("size").value,areaName,start:{...center,label:(S.loc&&S.loc.label)||areaName},skipped:sk,note:""};
+  if(c){list.forEach(b=>b._d=dist(b,center));list.sort((a,b)=>(b.open===true)-(a.open===true)||a._d-b._d);list=list.slice(0,want).map(b=>{delete b._d;return Object.assign(b,{outcome:"",interest:[],calls:[]});});
+   S.session=Object.assign(base,{kind:"call",items:list});}
+  else{const mode=segVal("mode");const pinned=list.filter(x=>x.pinned);let rest=list.filter(x=>!x.pinned);rest=pickAndOrder(pinned.concat(rest),center,endPt,Math.max(want,pinned.length));
+   S.session=Object.assign(base,{kind:"blitz",mode,end:endPt,stops:rest.map(x=>Object.assign(x,{outcome:"",interest:[]}))});}
+  $("recapAdd").value="";save();btn.disabled=false;go(c?"calllist":"route");
+  const got=c?S.session.items.length:S.session.stops.length;if(got<want)toast(`Found ${got}. Add any you spot along the way.`);
+ }catch(e){$("buildMsg").textContent=e.message+".";btn.disabled=false;}
 };
 function pickAndOrder(c,start,end,n){
  if(end){const dx=end.lon-start.lon,dy=end.lat-start.lat,L=dx*dx+dy*dy||1e-12;
-  c.forEach(p=>{let t=((p.lon-start.lon)*dx+(p.lat-start.lat)*dy)/L;t=Math.max(0,Math.min(1,t));p._t=t;p._d=dist(p,{lat:start.lat+t*dy,lon:start.lon+t*dx});});
+  c.forEach(p=>{let t=((p.lon-start.lon)*dx+(p.lat-start.lat)*dy)/L;t=Math.max(0,Math.min(1,t));p._t=t;p._d=p.pinned?-1:dist(p,{lat:start.lat+t*dy,lon:start.lon+t*dx});});
   c.sort((a,b)=>a._d-b._d);c=c.slice(0,n);c.sort((a,b)=>a._t-b._t);}
- else{c.forEach(p=>p._d=dist(p,start));c.sort((a,b)=>a._d-b._d);c=c.slice(0,n);
+ else{c.forEach(p=>p._d=p.pinned?-1:dist(p,start));c.sort((a,b)=>a._d-b._d);c=c.slice(0,n);
   const out=[];let here=start;while(c.length){let bi=0,bd=Infinity;c.forEach((p,i)=>{const d=dist(here,p);if(d<bd){bd=d;bi=i;}});here=c.splice(bi,1)[0];out.push(here);}c=out;}
- return c.map(p=>{const q={...p};delete q._t;delete q._d;return q;});}
+ return c.map(p=>{delete p._t;delete p._d;return p;});}
 
-/* ROUTE */
+/* ================= BLITZ ROUTE ================= */
 let map,layer;
-function renderRoute(){const s=S.session;if(!s)return go("home");
+function renderRoute(){const s=S.session;if(!s||s.kind!=="blitz")return go("home");
  const done=s.stops.filter(x=>x.outcome).length;let tot=0,prev=s.start;s.stops.forEach(p=>{tot+=dist(prev,p);prev=p;});tot+=dist(prev,s.end||s.start);
- $("routeH").textContent=`${s.stops.length} stops · ${s.vertical}`;
- $("routeSub").textContent=`${done} logged · about ${mi(tot*1.3)} ${s.mode} · ${s.hunt}`;
- $("stopList").innerHTML=s.stops.map((p,i)=>{const o=OUTCOMES.find(x=>x[0]===p.outcome);
-  return `<div class="stop" data-i="${i}"><div class="num ${p.outcome?(o&&o[1]==="no"?"skip":"done"):""}">${i+1}</div><div style="flex:1"><div class="nm">${esc(p.name)}</div><div class="ad">${esc(p.kind)}${p.addr?" · "+esc(p.addr):""}</div>${p.outcome?`<span class="tag ${o?o[1]:""}">${esc(p.outcome)}</span>`:""}</div><div class="note">&#8250;</div></div>`;}).join("");
+ $("routeH").textContent=`${s.stops.length} stops · ${s.vertical}`;$("routeSub").textContent=`${done} logged · about ${mi(tot*1.3)} ${s.mode} · ${s.hunt}`;
+ $("stopList").innerHTML=s.stops.map((p,i)=>{const o=B_OUT.find(x=>x[0]===p.outcome);
+  return `<div class="stop" data-i="${i}"><div class="num ${p.outcome?(o&&o[1]==="no"?"skip":"done"):""}">${i+1}</div><div style="flex:1"><div class="nm">${esc(p.name)}</div><div class="ad">${esc(p.kind)}${p.addr?" · "+esc(p.addr):""}</div>${p.pinned?`<span class="tag lead">Wants a visit (from a call)</span>`:""}${p.outcome?`<span class="tag ${o?o[1]:""}">${esc(p.outcome)}</span>${p.at?`<span class="tag">${fmtTime(p.at)}</span>`:""}`:""}</div><div class="note">&#8250;</div></div>`;}).join("");
  $("stopList").querySelectorAll(".stop").forEach(el=>el.onclick=()=>openStop(+el.dataset.i));
- const pend=s.stops.filter(p=>!p.outcome),legs=pend.length?pend:s.stops,fin=s.end||s.start;
- if(mapsApp()==="google"){const wp=legs.slice(0,9),o=S.loc||s.start;
-  $("fullRoute").href=`https://www.google.com/maps/dir/?api=1&origin=${o.lat},${o.lon}&destination=${fin.lat},${fin.lon}&waypoints=${encodeURIComponent(wp.map(p=>p.lat+","+p.lon).join("|"))}&travelmode=${s.mode}`;
-  $("fullRoute").textContent="Open route in Google Maps";
-  $("fullRouteNote").textContent=legs.length>9?"Google Maps takes the next 9 stops at a time. Open it again after those.":"";}
- else{$("fullRoute").href=navUrl(legs[0]);$("fullRoute").textContent="Apple Maps: next stop";$("fullRouteNote").textContent="Apple Maps takes one stop at a time. Each stop has its own Directions button.";}
+ const legs=s.stops.filter(p=>!p.outcome).length?s.stops.filter(p=>!p.outcome):s.stops,fin=s.end||s.start;
+ if(mapsApp()==="google"){const wp=legs.slice(0,9),o=S.loc||s.start;$("fullRoute").href=`https://www.google.com/maps/dir/?api=1&origin=${o.lat},${o.lon}&destination=${fin.lat},${fin.lon}&waypoints=${encodeURIComponent(wp.map(p=>p.lat+","+p.lon).join("|"))}&travelmode=${s.mode}`;$("fullRoute").textContent="Open route in Google Maps";$("fullRouteNote").textContent=legs.length>9?"Google Maps takes 9 stops at a time.":"";}
+ else{$("fullRoute").href=navUrl(legs[0],s.mode);$("fullRoute").textContent="Apple Maps: next stop";$("fullRouteNote").textContent="Apple Maps takes one stop at a time.";}
  drawMap();}
-function drawMap(){const s=S.session;
- if(!window.L){$("map").innerHTML='<div class="note" style="padding:20px">Map unavailable offline. Your stop list still works.</div>';return;}
+function drawMap(){const s=S.session;if(!window.L){$("map").innerHTML='<div class="note" style="padding:20px">Map unavailable offline.</div>';return;}
  if(!map){map=L.map("map",{zoomControl:false});L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"&copy; OpenStreetMap"}).addTo(map);}
  if(layer)layer.remove();layer=L.layerGroup().addTo(map);
- const pts=[[s.start.lat,s.start.lon],...s.stops.map(p=>[p.lat,p.lon])];if(s.end)pts.push([s.end.lat,s.end.lon]);else pts.push([s.start.lat,s.start.lon]);
+ const pts=[[s.start.lat,s.start.lon],...s.stops.map(p=>[p.lat,p.lon])];pts.push(s.end?[s.end.lat,s.end.lon]:[s.start.lat,s.start.lon]);
  L.polyline(pts,{color:"#FF6A00",weight:3,dashArray:"6 6"}).addTo(layer);
  const ic=(t,c)=>L.divIcon({className:"",html:`<div class="pin ${c}">${t}</div>`,iconSize:[26,26],iconAnchor:[13,13]});
- L.marker([s.start.lat,s.start.lon],{icon:ic("S","me")}).addTo(layer);
- if(s.end)L.marker([s.end.lat,s.end.lon],{icon:ic("E","me")}).addTo(layer);
- s.stops.forEach((p,i)=>L.marker([p.lat,p.lon],{icon:ic(i+1,p.outcome?"done":"")}).on("click",()=>openStop(i)).addTo(layer));
+ L.marker([s.start.lat,s.start.lon],{icon:ic("S","me")}).addTo(layer);if(s.end)L.marker([s.end.lat,s.end.lon],{icon:ic("E","me")}).addTo(layer);
+ s.stops.forEach((p,i)=>L.marker([p.lat,p.lon],{icon:ic(i+1,p.outcome?"done":p.pinned?"visit":"")}).on("click",()=>openStop(i)).addTo(layer));
  setTimeout(()=>{map.invalidateSize();map.fitBounds(pts,{padding:[24,24],maxZoom:17});},60);}
 $("addStopBtn").onclick=()=>{const name=prompt("Business name?");if(!name)return;
- const add=p=>{S.session.stops.push({id:"m"+Date.now(),name,lat:p.lat,lon:p.lon,addr:"",kind:"added on the street",phone:"",web:"",outcome:"",interest:[]});save();openStop(S.session.stops.length-1);};
- if(navigator.geolocation)navigator.geolocation.getCurrentPosition(p=>add({lat:p.coords.latitude,lon:p.coords.longitude}),()=>add(S.loc),{enableHighAccuracy:true,timeout:10000});else add(S.loc);};
-$("toRecap").onclick=()=>go("recap");
+ const add=p=>{S.session.stops.push({id:"m"+Date.now(),name,lat:p.lat,lon:p.lon,addr:"",kind:"added on the street",phone:"",outcome:"",interest:[]});save();openStop(S.session.stops.length-1);};
+ getGPS().then(add).catch(()=>add(S.loc||S.session.start));};
+$("toRecapB").onclick=()=>go("recap");
 
-/* STOP */
-fillSelect($("f-carrier"),CARRIERS);fillSelect($("f-isp"),ISPS);
-$("outcome").innerHTML=OUTCOMES.map(o=>`<button class="chip" data-v="${esc(o[0])}">${esc(o[0])}</button>`).join("");
-$("interest").innerHTML=INTEREST.map(o=>`<button class="chip" data-v="${esc(o)}">${esc(o)}</button>`).join("");
-function openStop(i){curStop=i;const s=S.session,p=s.stops[i];
- const bar=$("stopBar")||document.body.appendChild(Object.assign(document.createElement("div"),{id:"stopBar",className:"bar"}));
- go("stop");
+/* ================= SHARED DETAIL FORM ================= */
+function detailForm(prefix){return `
+ <label>Decision maker</label><input data-f="contact" placeholder="Name / title">
+ <div class="row"><div><label>Phone</label><input data-f="phone" type="tel" inputmode="tel"></div><div><label>Email</label><input data-f="email" type="email" inputmode="email"></div></div>
+ <div class="row"><div><label>Wireless carrier now</label><select data-f="carrier">${CARRIERS.map(x=>`<option>${x}</option>`).join("")}</select></div><div><label>Internet now</label><select data-f="isp">${ISPS.map(x=>`<option>${x}</option>`).join("")}</select></div></div>
+ <div class="row"><div><label>Employees</label><select data-f="emp">${SIZES.map(x=>`<option>${x}</option>`).join("")}</select></div><div><label># of lines</label><input data-f="lines" type="number" inputmode="numeric" min="0"></div></div>
+ <label>Contract / pain point</label><input data-f="pain" placeholder="e.g. up in March">
+ <label>Interested in</label><div class="chips" data-interest>${INTEREST.map(o=>`<button class="chip" data-v="${o}">${o}</button>`).join("")}</div>
+ <label>Next steps</label><input data-f="next" placeholder="e.g. Send quote Fri">
+ <label>Notes</label><textarea data-f="notes" placeholder="What happened?"></textarea>`;}
+$("formB").innerHTML=detailForm("b");$("formC").innerHTML=detailForm("c");
+function bindForm(root,getItem,onSave){root.querySelectorAll("[data-f]").forEach(el=>{const h=()=>{getItem()[el.dataset.f]=el.value;onSave();};el.addEventListener("input",h);el.addEventListener("change",h);});
+ root.querySelectorAll("[data-interest] .chip").forEach(b=>b.onclick=()=>{const p=getItem();p.interest=p.interest||[];const k=p.interest.indexOf(b.dataset.v);if(k<0)p.interest.push(b.dataset.v);else p.interest.splice(k,1);b.classList.toggle("on");onSave();});}
+function fillForm(root,p){root.querySelectorAll("[data-f]").forEach(el=>{const v=p[el.dataset.f];el.value=v!=null&&v!==""?v:(el.tagName==="SELECT"?el.options[0].value:"");});
+ root.querySelectorAll("[data-interest] .chip").forEach(b=>b.classList.toggle("on",(p.interest||[]).includes(b.dataset.v)));}
+
+/* ================= BLITZ STOP ================= */
+$("outcome").innerHTML=B_OUT.map(o=>`<button class="chip" data-v="${o[0]}">${o[0]}</button>`).join("");
+function stopItem(){return S.session.stops[curStop];}
+function stopSave(){const p=stopItem();p.saved=Date.now();if(p.outcome)S.visited[p.id]={t:p.at||Date.now(),name:p.name,outcome:p.outcome,lat:p.lat,lon:p.lon,kind:"blitz"};else delete S.visited[p.id];
+ const vq=S.visitQueue.findIndex(v=>v.id===p.id);if(p.outcome&&vq>=0)S.visitQueue.splice(vq,1);
+ if(p.outcome==="Wants follow-up"||p.outcome==="Lead - follow up"||p.outcome==="Come back later"){addFollowup({key:"b"+p.id,name:p.name,phone:p.phone,lat:p.lat,lon:p.lon,addr:p.addr,due:$("fuDateB").value||ymd(addBizDays(2)),why:p.outcome+" (blitz)",notes:p.next||"",from:"blitz"});}
+ save();$("savedTxt").textContent="Saved \u2713 "+fmtTime(Date.now());}
+bindForm($("formB"),stopItem,stopSave);
+function openStop(i){curStop=i;const s=S.session,p=s.stops[i];go("stop");
  $("stopIdx").textContent=`Stop ${i+1} of ${s.stops.length}`;$("stopName").textContent=p.name;
- $("stopAddr").textContent=[p.kind,p.addr].filter(Boolean).join(" · ")+(S.loc?` · ${mi(dist(S.loc,p))} from your last GPS fix`:"");
- $("navBtn").href=navUrl(p);$("navBtn").innerHTML=`&#129517; ${mapsApp()==="apple"?"Apple":"Google"} Maps`;
- $("callBtn").style.display=p.phone?"":"none";$("callBtn").href="tel:"+String(p.phone||"").replace(/[^\d+]/g,"");
- $("pitchHint").innerHTML=`<b>${esc(s.hunt)}:</b> ${esc(HUNT[s.hunt]||"")}`;
- document.querySelectorAll("#s-stop [data-f]").forEach(el=>{const v=p[el.dataset.f];el.value=v!=null?v:(el.tagName==="SELECT"?el.options[0].value:"");});
- document.querySelectorAll("#outcome .chip").forEach(b=>b.classList.toggle("on",b.dataset.v===p.outcome));
- document.querySelectorAll("#interest .chip").forEach(b=>b.classList.toggle("on",(p.interest||[]).includes(b.dataset.v)));
+ $("stopAddr").textContent=[p.kind,p.addr].filter(Boolean).join(" · ")+(S.loc?` · ${mi(dist(S.loc,p))} away`:"");
+ $("navBtn").href=navUrl(p,s.mode);$("navBtn").innerHTML=`&#129517; ${mapsApp()==="apple"?"Apple":"Google"} Maps`;
+ $("callBtn").style.display=p.phone?"":"none";$("callBtn").href="tel:"+digits(p.phone);
+ const h=HUNT[s.hunt];$("pitchHint").innerHTML=`<b>${esc(s.hunt)}:</b> ${esc(h.pitch)}`;
+ fillForm($("formB"),p);document.querySelectorAll("#outcome .chip").forEach(b=>b.classList.toggle("on",b.dataset.v===p.outcome));
+ $("fuWrapB").style.display=/follow|later/i.test(p.outcome)?"":"none";$("fuDateB").value=(S.followups.find(f=>f.key==="b"+p.id&&!f.done)||{}).due||ymd(addBizDays(2));
  $("savedTxt").textContent=p.saved?"Saved "+fmtTime(p.saved):"";
  const last=i>=s.stops.length-1;
- bar.innerHTML=`<div class="in"><button class="btn ghost" id="sbList">All stops</button><button class="btn" id="sbNext">${last?"Finish &amp; recap":"Save &amp; next stop &#8250;"}</button></div>`;
- $("sbList").onclick=()=>go("route");
- $("sbNext").onclick=()=>{const q=S.session.stops[curStop];if(!q.outcome&&!(q.notes||"").trim()&&!confirm("No outcome or notes yet. Move on anyway?"))return;if(last)go("recap");else openStop(curStop+1);};
-}
-function stopSave(){const p=S.session.stops[curStop];p.saved=Date.now();
- if(p.outcome)S.visited[p.id]={t:Date.now(),name:p.name,outcome:p.outcome,lat:p.lat,lon:p.lon};else delete S.visited[p.id];
- save();$("savedTxt").textContent="Saved ✓ "+fmtTime(Date.now());}
-document.querySelectorAll("#s-stop [data-f]").forEach(el=>{const h=()=>{S.session.stops[curStop][el.dataset.f]=el.value;stopSave();};el.addEventListener("input",h);el.addEventListener("change",h);});
-document.querySelectorAll("#outcome .chip").forEach(b=>b.onclick=()=>{const p=S.session.stops[curStop];p.outcome=p.outcome===b.dataset.v?"":b.dataset.v;
- document.querySelectorAll("#outcome .chip").forEach(x=>x.classList.toggle("on",x.dataset.v===p.outcome));stopSave();});
-document.querySelectorAll("#interest .chip").forEach(b=>b.onclick=()=>{const p=S.session.stops[curStop];p.interest=p.interest||[];const k=p.interest.indexOf(b.dataset.v);if(k<0)p.interest.push(b.dataset.v);else p.interest.splice(k,1);b.classList.toggle("on");stopSave();});
+ setBar(`<button class="btn ghost" id="sbList">All stops</button><button class="btn" id="sbNext">${last?"Finish &amp; recap":"Next stop &#8250;"}</button>`);
+ $("sbList").onclick=()=>go("route");$("sbNext").onclick=()=>{const q=stopItem();if(!q.outcome&&!(q.notes||"").trim()&&!confirm("No outcome yet. Move on anyway?"))return;if(last)go("recap");else openStop(curStop+1);};}
+document.querySelectorAll("#outcome .chip").forEach(b=>b.onclick=()=>{const p=stopItem();p.outcome=p.outcome===b.dataset.v?"":b.dataset.v;p.at=p.outcome?Date.now():null;
+ document.querySelectorAll("#outcome .chip").forEach(x=>x.classList.toggle("on",x.dataset.v===p.outcome));$("fuWrapB").style.display=/follow|later/i.test(p.outcome)?"":"none";
+ if(!/follow|later/i.test(p.outcome)){const f=S.followups.find(f=>f.key==="b"+p.id&&!f.done);if(f){S.followups.splice(S.followups.indexOf(f),1);}}stopSave();});
+$("fuDateB").onchange=()=>stopSave();
+$("calB").onclick=()=>{const p=stopItem();const d=new Date(($("fuDateB").value||todayYMD())+"T10:00");ics("Follow up: "+p.name,d.getTime(),[p.contact,p.phone&&prettyPhone(p.phone),p.addr,p.next,p.notes].filter(Boolean).join(" | "));};
 
-/* RECAP */
-const isLead=p=>p.outcome==="Lead - follow up"||p.outcome==="Sold"||((p.interest||[]).length>0&&p.outcome!=="Not interested");
-function recapText(full){const s=S.session,st=S.settings,v=s.stops.filter(p=>p.outcome),leads=s.stops.filter(isLead),sold=s.stops.filter(p=>p.outcome==="Sold");
- const d=new Date(s.date).toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
- const tally=(arr,f)=>{const o={};arr.forEach(p=>[].concat(f(p)||[]).forEach(x=>{if(x&&x!=="Unknown")o[x]=(o[x]||0)+1;}));return Object.entries(o).sort((a,b)=>b[1]-a[1]).map(([k,n])=>`${k} ${n}`).join(", ")||"none noted";};
- const area=s.start.label||`${s.start.lat.toFixed(4)}, ${s.start.lon.toFixed(4)}`;
- let t=`TRUE PROSPECT RECAP: ${st.name||"Rep"}, ${d}\n`;
- t+=`Area: ${area}${s.end?` to ${s.end.label}`:""} (${s.mode}, ${s.hours} hr)\nVertical: ${s.vertical} | Hunting for: ${s.hunt}\n\n`;
- t+=`SCOREBOARD\nPlanned ${s.stops.length} | Visited ${v.length} | Leads ${leads.length} | Sold ${sold.length}\n`;
- t+=`Carriers seen: ${tally(v,p=>p.carrier)}\nInternet seen: ${tally(v,p=>p.isp)}\nInterest: ${tally(leads,p=>p.interest)}\n`;
+/* ================= CALLING ================= */
+function renderCallList(){const s=S.session;if(!s||s.kind!=="call")return go("home");
+ const done=s.items.filter(x=>x.outcome).length,conn=s.items.filter(x=>CONNECT.has(x.outcome)).length;
+ $("clH").textContent=`${s.items.length} numbers · ${s.vertical}`;$("clSub").textContent=`${done} dialed · ${conn} connected · ${s.areaName||"near you"} · ${s.hunt}`;
+ $("clList").innerHTML=s.items.map((p,i)=>{const o=C_OUT.find(x=>x[0]===p.outcome);
+  return `<div class="stop" data-i="${i}"><div class="num ${p.outcome?(o&&o[1]==="no"?"skip":"done"):""}">${i+1}</div><div style="flex:1"><div class="nm">${esc(p.name)}</div><div class="ad">${esc(prettyPhone(p.phone))} · ${esc(p.kind)}${p.addr?" · "+esc(p.addr):""}</div>${p.open===true?`<span class="tag open">Open now</span>`:p.open===false?`<span class="tag no">Closed now</span>`:""}${p.outcome?`<span class="tag ${o?o[1]:""}">${esc(p.outcome)}</span>`:""}${p.calls&&p.calls.length?`<span class="tag">${p.calls.length} call${p.calls.length>1?"s":""} · last ${fmtTime(p.calls[p.calls.length-1].start)}</span>`:""}</div><div class="note">&#8250;</div></div>`;}).join("");
+ $("clList").querySelectorAll(".stop").forEach(el=>el.onclick=()=>openCall(+el.dataset.i));
+ const nx=s.items.findIndex(x=>!x.outcome);setBar(nx>=0?`<button class="btn" id="startDial">&#128222; ${done?"Keep dialing":"Start dialing"} (${s.items.length-done} left)</button>`:`<button class="btn" id="startDial">All dialed: recap &#8250;</button>`);
+ $("startDial").onclick=()=>nx>=0?openCall(nx):go("recap");}
+$("addCallBtn").onclick=()=>{const name=prompt("Business name?");if(!name)return;const ph=prompt("Phone number?");if(!digits(ph))return toast("Need a phone number");
+ if(S.dnc[digits(ph)])return toast("That number is on your do-not-call list");
+ S.session.items.push({id:"m"+Date.now(),name,phone:ph,kind:"added",addr:"",lat:S.loc&&S.loc.lat,lon:S.loc&&S.loc.lon,outcome:"",interest:[],calls:[]});save();renderCallList();};
+$("toRecapC").onclick=()=>go("recap");
+$("cOutcome").innerHTML=C_OUT.map(o=>`<button class="chip" data-v="${o[0]}">${o[0]}</button>`).join("");
+function callItem(){return S.session.items[curCall];}
+let dialing=null,timerInt=null;
+function openCall(i){curCall=i;const s=S.session,p=s.items[i];go("dial");
+ const done=s.items.filter(x=>x.outcome).length;$("dialProg").style.width=(100*done/s.items.length)+"%";
+ $("dialIdx").textContent=`Call ${i+1} of ${s.items.length} · Today: ${todaysDials()} / ${S.settings.goal||50} dials`;
+ $("dName").textContent=p.name;$("dInfo").innerHTML=[esc(p.kind),esc(p.addr),p.open===true?'<span class="tag open">Open now</span>':p.open===false?'<span class="tag no">Closed now</span>':"",p.hours?`<span class="note">Hours: ${esc(p.hours)}</span>`:""].filter(Boolean).join(" · ");
+ $("dPhone").textContent=prettyPhone(p.phone);$("dCall").href="tel:"+digits(p.phone);
+ const h=HUNT[s.hunt];$("dScript").innerHTML=`<div class="script"><b>Open:</b> ${esc(fill(h.open))}</div><b>Ask:</b><ul style="margin:6px 0 6px 18px;padding:0">${h.ask.map(a=>`<li>${esc(a)}</li>`).join("")}</ul><div class="script"><b>Pitch:</b> ${esc(h.pitch)}</div>`;
+ $("dObj").innerHTML=OBJ.map(o=>`<div class="script"><b>${esc(o[0])}</b><br>${esc(o[1])}</div>`).join("");$("dVm").textContent=fill(VM);
+ fillForm($("formC"),p);document.querySelectorAll("#cOutcome .chip").forEach(b=>b.classList.toggle("on",b.dataset.v===p.outcome));
+ showFuC(p);$("savedTxtC").textContent=p.saved?"Saved "+fmtTime(p.saved):"";
+ const lc=p.calls&&p.calls[p.calls.length-1];$("dTimer").textContent=lc?`Last call ${fmtDT(lc.start)}${lc.dur?` · ${Math.round(lc.dur/60)||"<1"} min`:""}`:"";
+ const last=i>=s.items.length-1;
+ setBar(`<button class="btn ghost" id="cbList">List</button><button class="btn" id="cbNext">${last?"Finish &amp; recap":"Next call &#8250;"}</button>`);
+ $("cbList").onclick=()=>go("calllist");
+ $("cbNext").onclick=()=>{const q=callItem();if(!q.outcome&&!confirm("No outcome yet. Skip this one?"))return;const nx=S.session.items.findIndex((x,k)=>k>curCall&&!x.outcome);if(nx>=0)openCall(nx);else if(last)go("recap");else openCall(curCall+1);};}
+$("dCall").addEventListener("click",()=>{const p=callItem();const c={start:Date.now()};p.calls=p.calls||[];p.calls.push(c);dialing={item:p,call:c};
+ logCall({start:c.start,name:p.name,phone:p.phone,lat:p.lat,lon:p.lon,kind:"call",sid:S.session.id,bid:p.id});save();
+ clearInterval(timerInt);timerInt=setInterval(()=>{if(cur==="dial")$("dTimer").textContent="On a call · "+Math.floor((Date.now()-c.start)/1000)+"s";},1000);});
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&dialing){const c=dialing.call;if(!c.end){c.end=Date.now();c.dur=Math.round((c.end-c.start)/1000);
+ const lg=S.calls.find(x=>x.start===c.start);if(lg){lg.end=c.end;lg.dur=c.dur;}save();clearInterval(timerInt);if(cur==="dial")$("dTimer").textContent=`Call logged at ${fmtTime(c.start)} · about ${Math.max(1,Math.round(c.dur/60))} min`;toast("How did it go? Tap an outcome");}dialing=null;}});
+function showFuC(p){const fu=["Wants follow-up","Appointment set","Left voicemail","No answer","Gatekeeper"].includes(p.outcome);$("fuWrapC").style.display=fu?"":"none";
+ $("fuLblC").textContent=p.outcome==="Appointment set"?"Appointment date & time":"Follow up on";
+ const f=S.followups.find(x=>x.key==="c"+p.id&&!x.done);let d=f?new Date(f.due+"T10:00"):(p.outcome==="Left voicemail"?addBizDays(2):p.outcome==="No answer"||p.outcome==="Gatekeeper"?addBizDays(1):addBizDays(3));if(!f)d.setHours(10,0,0,0);
+ if(p.fuWhen)d=new Date(p.fuWhen);const loc=new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,16);$("fuDateC").value=loc;
+ const showMsg=["Conversation","Wants follow-up","Appointment set","Wants a visit","Left voicemail"].includes(p.outcome);$("msgRow").style.display=showMsg?"":"none";
+ const em=p.email||"",txt=`Hi${p.contact?" "+p.contact.split(" ")[0]:""}, this is ${rep()} with Your Wireless (Verizon). ${p.outcome==="Left voicemail"?"I just left you a voicemail":"Thanks for your time today"}. I'd love to put together business pricing for ${p.name}. When's a good time to connect?`;
+ $("smsBtn").href=`sms:${digits(p.phone)}${isApple()?"&":"?"}body=${encodeURIComponent(txt)}`;
+ $("mailBtnC").href=`mailto:${encodeURIComponent(em)}?subject=${encodeURIComponent("Verizon business pricing for "+p.name)}&body=${encodeURIComponent(txt+"\n\n"+rep()+"\nYour Wireless, Verizon Authorized Retailer")}`;}
+function callSave(){const p=callItem();p.saved=Date.now();const s=S.session;
+ if(p.outcome){S.visited[p.id]={t:Date.now(),name:p.name,outcome:p.outcome,lat:p.lat,lon:p.lon,kind:"call"};
+  const lg=[...S.calls].reverse().find(x=>x.bid===p.id&&x.sid===s.id);if(lg)lg.outcome=p.outcome;else logCall({start:Date.now(),name:p.name,phone:p.phone,lat:p.lat,lon:p.lon,kind:"call",sid:s.id,bid:p.id,outcome:p.outcome,manual:true});}
+ const key="c"+p.id,fu=["Wants follow-up","Appointment set","Left voicemail","No answer","Gatekeeper"].includes(p.outcome);
+ if(fu){const when=$("fuDateC").value?new Date($("fuDateC").value):addBizDays(2);p.fuWhen=when.getTime();addFollowup({key,name:p.name,phone:p.phone,email:p.email,lat:p.lat,lon:p.lon,addr:p.addr,due:ymd(when),when:when.getTime(),why:p.outcome==="Appointment set"?"Appointment "+fmtDT(when):p.outcome==="Left voicemail"?"Call back (left voicemail)":p.outcome==="Wants follow-up"?"Wants follow-up":"Try again ("+p.outcome.toLowerCase()+")",notes:p.next||"",from:"call"});}
+ else{const f=S.followups.find(x=>x.key===key&&!x.done);if(f)S.followups.splice(S.followups.indexOf(f),1);}
+ const vi=S.visitQueue.findIndex(v=>v.id===p.id);if(p.outcome==="Wants a visit"){if(vi<0)S.visitQueue.push({id:p.id,name:p.name,phone:p.phone,lat:p.lat,lon:p.lon,addr:p.addr,kind:p.kind,added:Date.now()});}else if(vi>=0)S.visitQueue.splice(vi,1);
+ const d=digits(p.phone);if(p.outcome==="Do not call"&&d)S.dnc[d]={name:p.name,t:Date.now()};else if(d&&S.dnc[d]&&S.dnc[d].name===p.name&&p.outcome!=="Do not call")delete S.dnc[d];
+ save();$("savedTxtC").textContent="Saved \u2713 "+fmtTime(Date.now());}
+bindForm($("formC"),callItem,callSave);
+document.querySelectorAll("#cOutcome .chip").forEach(b=>b.onclick=()=>{const p=callItem();p.outcome=p.outcome===b.dataset.v?"":b.dataset.v;p.at=p.outcome?Date.now():null;p.fuWhen=null;
+ document.querySelectorAll("#cOutcome .chip").forEach(x=>x.classList.toggle("on",x.dataset.v===p.outcome));showFuC(p);callSave();
+ if(p.outcome==="Wants a visit")toast("Added to your next Foot Blitz route");if(p.outcome==="Do not call")toast("Added to your do-not-call list");});
+$("fuDateC").onchange=()=>{const p=callItem();p.fuWhen=new Date($("fuDateC").value).getTime();callSave();};
+$("calC").onclick=()=>{const p=callItem();const w=$("fuDateC").value?new Date($("fuDateC").value).getTime():Date.now()+864e5;ics((p.outcome==="Appointment set"?"Appointment: ":"Call back: ")+p.name,w,[p.contact,prettyPhone(p.phone),p.next,p.notes].filter(Boolean).join(" | "),p.outcome==="Appointment set"?30:15);};
+
+/* ================= CARD SCAN ================= */
+let tessLoading=null;
+function loadTess(){if(window.Tesseract)return Promise.resolve();if(tessLoading)return tessLoading;tessLoading=new Promise((res,rej)=>{const s=document.createElement("script");s.src=TESS;s.onload=res;s.onerror=()=>{tessLoading=null;rej(new Error("Couldn't load the card reader. Check your connection."));};document.head.appendChild(s);});return tessLoading;}
+function shrink(file){return new Promise(res=>{const img=new Image();img.onload=()=>{const k=Math.min(1,1600/Math.max(img.width,img.height));const c=document.createElement("canvas");c.width=img.width*k;c.height=img.height*k;const x=c.getContext("2d");x.filter="grayscale(1) contrast(1.4)";x.drawImage(img,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",.9));};img.src=URL.createObjectURL(file);});}
+function parseCard(text){const lines=text.split(/\n/).map(l=>l.replace(/[|_~=]+/g," ").replace(/\s+/g," ").trim()).filter(l=>l.length>1);const out={phone:"",email:"",web:"",name:"",title:"",biz:"",addr:"",notes:""};
+ const em=text.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);if(em)out.email=em[0].toLowerCase();
+ const phones=[];lines.forEach(l=>{const m=l.match(/(\+?1[\s.-]?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}/g);if(m)m.forEach(x=>phones.push({n:x,l:l.toLowerCase()}));});
+ const pick=phones.find(p=>/(o|off|office|tel|t:|phone|main|p:)/.test(p.l)&&!/fax/.test(p.l))||phones.find(p=>!/fax/.test(p.l))||phones[0];if(pick)out.phone=prettyPhone(pick.n);
+ const extra=phones.filter(p=>p!==pick&&!/fax/.test(p.l)).map(p=>prettyPhone(p.n));if(extra.length)out.notes="Other #: "+extra.join(", ");
+ const w=text.match(/\b(?:https?:\/\/)?(?:www\.)?[a-z0-9-]+\.(?:com|net|org|biz|us|co|io|info)\b(?:\/\S*)?/i);if(w&&!(out.email&&out.email.includes(w[0].toLowerCase().replace(/^www\./,""))))out.web=w[0];else if(out.email&&!/gmail|yahoo|hotmail|aol|outlook|icloud/.test(out.email))out.web="www."+out.email.split("@")[1];
+ const ad=lines.find(l=>/^\d{1,6}\s+\w+.*\b(st|street|ave|avenue|rd|road|blvd|dr|drive|ln|lane|way|pike|hwy|highway|ct|court|pl|place|pkwy|suite|ste)\b/i.test(l));const cityLine=lines.find(l=>/\b[A-Z]{2}\s+\d{5}(-\d{4})?\b/.test(l));
+ out.addr=[ad,cityLine&&cityLine!==ad?cityLine:""].filter(Boolean).join(", ");
+ const TITLE=/\b(owner|president|ceo|cfo|coo|founder|manager|director|partner|principal|vp|vice|sales|agent|broker|attorney|dds|dmd|md|technician|consultant|coordinator|specialist|officer|associate|estimator|supervisor)\b/i;
+ const BIZ=/\b(inc|llc|l\.l\.c|corp|co\.|company|group|services|solutions|associates|agency|partners|ltd|construction|plumbing|electric|auto|salon|dental|law|realty|insurance|restaurant|cafe|studio|roofing|landscaping|hvac|heating|cleaning|transport|logistics)\b/i;
+ const clean=lines.filter(l=>!/@|www\.|https?:|\d{3}[\s.-]?\d{4}/.test(l)&&l!==ad&&l!==cityLine&&/[a-z]/i.test(l));
+ const t=clean.find(l=>TITLE.test(l)&&l.split(" ").length<=6);if(t)out.title=t;
+ const b=clean.find(l=>BIZ.test(l)&&l!==t);
+ const n=clean.find(l=>l!==t&&l!==b&&/^[A-Z][a-z'.-]+(\s+[A-Z]\.?)?\s+[A-Z][a-zA-Z'.-]+(,?\s*(jr|sr|ii|iii))?$/.test(l));if(n)out.name=n;
+ out.biz=b||clean.filter(l=>l!==t&&l!==n).sort((x,y)=>(y===y.toUpperCase())-(x===x.toUpperCase())||x.length-y.length)[0]||"";
+ return out;}
+function renderScan(){if(!$("k-due").value)$("k-due").value=ymd(addBizDays(1));
+ const s=S.session;const acts=[`<button class="btn" id="kCall">&#128222; Call now</button>`];
+ if(s&&s.kind==="call")acts.push(`<button class="btn dark" id="kToCall">+ Add to today's call list</button>`);
+ if(s&&s.kind==="blitz")acts.push(`<button class="btn dark" id="kToRoute">+ Add as a stop on today's route</button>`);
+ acts.push(`<button class="btn ghost" id="kFu">&#9200; Save as a follow-up</button>`,`<button class="btn ghost" id="kCal">&#128197; Follow-up reminder in my calendar</button>`);
+ $("cardActions").innerHTML=acts.join("");
+ const card=()=>({name:$("k-biz").value.trim()||"Business card",contact:[$("k-name").value.trim(),$("k-title").value.trim()].filter(Boolean).join(", "),phone:$("k-phone").value.trim(),email:$("k-email").value.trim(),web:$("k-web").value.trim(),addr:$("k-addr").value.trim(),notes:$("k-notes").value.trim()});
+ const where=async c=>{let p=null;if(c.addr){try{p=await geocode(c.addr);}catch(e){}}if(!p&&S.loc)p={lat:S.loc.lat,lon:S.loc.lon};return p||{};};
+ const mk=async()=>{const c=card();const p=await where(c);return Object.assign({id:"k"+Date.now(),kind:"business card",lat:p.lat,lon:p.lon,outcome:"",interest:[],calls:[],source:"card"},c,{notes:[c.notes,c.web&&("Web: "+c.web)].filter(Boolean).join(" · ")});};
+ $("kCall").onclick=async()=>{const c=await mk();if(!digits(c.phone))return toast("Add a phone number first");
+  if(s&&s.kind==="call"){s.items.splice(0,0,c);save();openCall(0);$("dCall").click();return;}
+  addFollowup({key:"k"+c.id,name:c.name,phone:c.phone,email:c.email,lat:c.lat,lon:c.lon,addr:c.addr,due:todayYMD(),why:"Card scanned · called",notes:c.contact,from:"card"});logCall({start:Date.now(),name:c.name,phone:c.phone,lat:c.lat,lon:c.lon,kind:"card"});location.href="tel:"+digits(c.phone);};
+ const tc=$("kToCall");if(tc)tc.onclick=async()=>{const c=await mk();if(!digits(c.phone))return toast("Add a phone number first");s.items.push(c);save();toast("Added to your call list");go("calllist");};
+ const tr=$("kToRoute");if(tr)tr.onclick=async()=>{const c=await mk();if(c.lat==null)return toast("Add an address or turn on location");s.stops.push(c);save();toast("Added to your route");go("route");};
+ $("kFu").onclick=async()=>{const c=await mk();addFollowup({key:"k"+c.id,name:c.name,phone:c.phone,email:c.email,lat:c.lat,lon:c.lon,addr:c.addr,due:$("k-due").value||ymd(addBizDays(1)),why:"Business card"+(c.contact?" · "+c.contact:""),notes:c.notes,from:"card"});toast("Saved to follow-ups");go("home");};
+ $("kCal").onclick=()=>{const c=card();ics("Follow up: "+c.name,new Date(($("k-due").value||todayYMD())+"T10:00").getTime(),[c.contact,c.phone,c.email,c.addr,c.notes].filter(Boolean).join(" | "));};}
+$("cardFile").onchange=async e=>{const f=e.target.files[0];e.target.value="";if(!f)return;const data=await shrink(f);$("cardImg").src=data;$("cardImg").style.display="block";$("cardForm").style.display="none";
+ $("ocrMsg").innerHTML='<span class="spin"></span> Reading the card… (first time takes about 10 seconds)';
+ try{await loadTess();const r=await Tesseract.recognize(data,"eng",{logger:m=>{if(m.status==="recognizing text")$("ocrMsg").innerHTML=`<span class="spin"></span> Reading the card… ${Math.round(m.progress*100)}%`;}});
+  const c=parseCard(r.data.text||"");["biz","name","title","phone","email","web","addr","notes"].forEach(k=>$("k-"+k).value=c[k]||"");
+  $("ocrMsg").textContent=c.phone||c.email?"Got it. Check the fields and fix anything the camera misread.":"Couldn't read much. Try again in better light, or type it in below.";
+ }catch(err){$("ocrMsg").textContent=err.message+" You can still type the details below.";}
+ $("cardForm").style.display="block";renderScan();};
+
+/* ================= RECAP ================= */
+const isLead=p=>["Lead - follow up","Wants follow-up","Wants a visit","Appointment set","Sold"].includes(p.outcome)||((p.interest||[]).length>0&&!["Not interested","Do not call"].includes(p.outcome));
+function items(s){return s.kind==="call"?s.items:s.stops;}
+function stats(s){const it=items(s);if(s.kind==="call"){const d=it.filter(p=>p.outcome).length,dials=it.reduce((a,p)=>a+((p.calls&&p.calls.length)||(p.outcome?1:0)),0);
+  return{dials,dialed:d,conv:it.filter(p=>CONNECT.has(p.outcome)).length,fu:it.filter(p=>p.outcome==="Wants follow-up").length,appt:it.filter(p=>p.outcome==="Appointment set").length,visit:it.filter(p=>p.outcome==="Wants a visit").length,sold:it.filter(p=>p.outcome==="Sold").length,vm:it.filter(p=>p.outcome==="Left voicemail").length,leads:it.filter(isLead).length};}
+ return{visited:it.filter(p=>p.outcome).length,leads:it.filter(isLead).length,fu:it.filter(p=>/follow|later/i.test(p.outcome)).length,sold:it.filter(p=>p.outcome==="Sold").length,planned:it.length};}
+function recapText(full){const s=S.session,st=S.settings,x=stats(s),it=items(s);const d=new Date(s.date).toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
+ const tally=(arr,f)=>{const o={};arr.forEach(p=>[].concat(f(p)||[]).forEach(v=>{if(v&&v!=="Unknown")o[v]=(o[v]||0)+1;}));return Object.entries(o).sort((a,b)=>b[1]-a[1]).map(([k,n])=>`${k} ${n}`).join(", ")||"none noted";};
+ const touched=it.filter(p=>p.outcome);
+ let t=`TRUE PROSPECT ${s.kind==="call"?"CALL":"FOOT BLITZ"} RECAP: ${st.name||"Rep"}, ${d}\n`;
+ t+=`Area: ${s.areaName||s.start.label||""}${s.end?` to ${s.end.label}`:""} (${s.kind==="call"?"calling":s.mode}, ${s.hours} hr)\nVertical: ${s.vertical} | Size: ${s.size||"Any"} | Hunting: ${s.hunt}\n\n`;
+ if(s.kind==="call")t+=`SCOREBOARD\nDials ${x.dials} | Conversations ${x.conv} | Voicemails ${x.vm} | Follow-ups ${x.fu} | Appointments ${x.appt} | Visits booked ${x.visit} | Sold ${x.sold}\n`;
+ else t+=`SCOREBOARD\nPlanned ${x.planned} | Visited ${x.visited} | Leads ${x.leads} | Follow-ups ${x.fu} | Sold ${x.sold}\n`;
+ t+=`Carriers seen: ${tally(touched,p=>p.carrier)}\nInternet seen: ${tally(touched,p=>p.isp)}\nInterest: ${tally(touched,p=>p.interest)}\n`;
  const add=($("recapAdd").value||"").trim();if(add)t+=`\nREP NOTES\n${add}\n`;
- if(leads.length){t+=`\nLEADS & FOLLOW-UPS\n`;leads.forEach((p,i)=>{
-  t+=`${i+1}. ${p.name}${p.addr?" ("+p.addr+")":""}\n   ${p.outcome||"Interested"}${p.contact?" | "+p.contact:""}${p.phone?" | "+p.phone:""}${p.email?" | "+p.email:""}\n`;
-  const now=[p.carrier&&p.carrier!=="Unknown"?"Wireless: "+p.carrier:"",p.isp&&p.isp!=="Unknown"?"Internet: "+p.isp:"",p.lines?p.lines+" lines":"",p.pain,(p.interest||[]).length?"Wants: "+p.interest.join(", "):""].filter(Boolean).join(" | ");
-  if(now)t+=`   ${now}\n`;
-  if(p.next)t+=`   Next: ${p.next}\n`;if(p.notes)t+=`   Notes: ${p.notes}\n`;});}
- const others=v.filter(p=>!isLead(p));
- if(others.length){t+=`\nOTHER STOPS\n`;others.forEach(p=>{t+=`- ${p.name}: ${p.outcome}${full&&p.notes?" ("+p.notes+")":""}\n`;});}
- const not=s.stops.filter(p=>!p.outcome);if(not.length)t+=`\nNOT REACHED (${not.length}): ${not.map(p=>p.name).join(", ")}\n`;
+ const leads=it.filter(isLead);
+ if(leads.length){t+=`\nLEADS & FOLLOW-UPS\n`;leads.forEach((p,i)=>{const f=S.followups.find(q=>(q.key==="c"+p.id||q.key==="b"+p.id)&&!q.done);
+  t+=`${i+1}. ${p.name}${p.addr?" ("+p.addr+")":""}${p.phone?" "+prettyPhone(p.phone):""}\n   ${p.outcome||"Interested"}${p.at?" @ "+fmtTime(p.at):""}${p.contact?" | "+p.contact:""}${p.email?" | "+p.email:""}${f?" | Follow up "+f.due:""}\n`;
+  const now=[p.carrier&&p.carrier!=="Unknown"?"Wireless: "+p.carrier:"",p.isp&&p.isp!=="Unknown"?"Internet: "+p.isp:"",p.emp&&p.emp!=="Unknown"?p.emp+" employees":"",p.lines?p.lines+" lines":"",p.pain,(p.interest||[]).length?"Wants: "+p.interest.join(", "):""].filter(Boolean).join(" | ");
+  if(now)t+=`   ${now}\n`;if(p.next)t+=`   Next: ${p.next}\n`;if(p.notes&&full)t+=`   Notes: ${p.notes}\n`;});}
+ if(full){const others=touched.filter(p=>!isLead(p));if(others.length){t+=`\n${s.kind==="call"?"CALL LOG":"OTHER STOPS"}\n`;others.forEach(p=>{const c=p.calls&&p.calls[p.calls.length-1];t+=`- ${p.at?fmtTime(p.at)+" ":""}${p.name}${p.phone?" "+prettyPhone(p.phone):""}: ${p.outcome}${c&&c.dur?` (${Math.max(1,Math.round(c.dur/60))} min)`:""}\n`;});}}
  return t;}
-function renderRecap(){const s=S.session;if(!s)return go("home");
- $("r-visits").textContent=s.stops.filter(p=>p.outcome).length;$("r-leads").textContent=s.stops.filter(isLead).length;$("r-sold").textContent=s.stops.filter(p=>p.outcome==="Sold").length;
- $("recapSub").textContent=new Date(s.date).toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
- if(!$("recapAdd").value&&s.note)$("recapAdd").value=s.note;
- updMail();}
-const LIM=1800;
-function updMail(){const s=S.session,st=S.settings,full=recapText(true);$("recapPre").textContent=full;
- let body=full;if(body.length>LIM)body=recapText(false);
- const trimmed=body.length>LIM;if(trimmed)body=body.slice(0,LIM)+"\n\n...(trimmed. The full recap is on your clipboard: paste it here.)";
- const subj=`True Prospect recap: ${st.name||"Rep"}, ${new Date(s.date).toLocaleDateString("en-US")}`;
- const q=[];if(st.cc)q.push("cc="+encodeURIComponent(st.cc));q.push("subject="+encodeURIComponent(subj));q.push("body="+encodeURIComponent(body));
+function dataBlock(){const s=S.session,x=stats(s);const code={"Sold":"S","Appointment set":"A","Wants a visit":"V","Wants follow-up":"F","Lead - follow up":"F","Conversation":"C","Left voicemail":"M","No answer":"N","Not interested":"X","Do not call":"X"};
+ const pts=items(s).filter(p=>p.outcome&&p.lat).slice(0,40).map(p=>[+p.lat.toFixed(3),+p.lon.toFixed(3),code[p.outcome]||"O"]);
+ return "\n---TP-DATA---\n"+JSON.stringify({v:2,r:S.settings.name||"",d:ymd(s.date),m:s.kind,vert:s.vertical,n:x,p:pts})+"\n---END---";}
+function renderRecap(){const s=S.session;if(!s)return go("home");const x=stats(s);
+ $("recapStats").innerHTML=s.kind==="call"?`<div><b>${x.dials}</b><span>Dials</span></div><div><b>${x.conv}</b><span>Convos</span></div><div><b>${x.fu+x.appt}</b><span>Follow-ups / appts</span></div><div><b>${x.visit}</b><span>Visits</span></div>`:`<div><b>${x.visited}</b><span>Visited</span></div><div><b>${x.leads}</b><span>Leads</span></div><div><b>${x.fu}</b><span>Follow-ups</span></div><div><b>${x.sold}</b><span>Sold</span></div>`;
+ $("recapSub").textContent=(s.kind==="call"?"Calling · ":"Foot blitz · ")+new Date(s.date).toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
+ if(!$("recapAdd").value&&s.note)$("recapAdd").value=s.note;updMail();}
+const LIM=1900;
+function updMail(){const s=S.session,st=S.settings,full=recapText(true),db=dataBlock();$("recapPre").textContent=full;
+ let body=full;if(body.length+db.length>LIM)body=recapText(false);const trimmed=body.length+db.length>LIM;if(trimmed)body=body.slice(0,LIM-db.length-80)+"\n...(trimmed. Full recap is on your clipboard.)";
+ const subj=`True Prospect ${s.kind==="call"?"call":"blitz"} recap: ${st.name||"Rep"}, ${new Date(s.date).toLocaleDateString("en-US")}`;
+ const q=[];if(st.cc)q.push("cc="+encodeURIComponent(st.cc));q.push("subject="+encodeURIComponent(subj));q.push("body="+encodeURIComponent(body+"\n"+db));
  $("mailBtn").href=`mailto:${encodeURIComponent(st.email||"")}?${q.join("&")}`;$("mailBtn").dataset.trim=trimmed?"1":"";
- $("mailNote").textContent=`${st.email?"To you":"Add your email in Settings"}${st.cc?", cc "+st.cc:". No CC set: add your managers in Settings."}`;}
+ $("mailNote").textContent=`${st.email?"To you":"Add your email in Settings"}${st.cc?", cc "+st.cc:". No CC set."}`;}
 $("recapAdd").addEventListener("input",()=>{if(!S.session)return;S.session.note=$("recapAdd").value;save();updMail();});
 $("mailBtn").addEventListener("click",()=>{if($("mailBtn").dataset.trim)copy(recapText(true));});
 $("copyRecap").onclick=()=>copy(recapText(true));
-const clean=x=>String(x||"").replace(/[\t\r\n]+/g," ").trim();
-$("copyLeadsA").onclick=()=>{const st=S.settings,L=S.session.stops.filter(isLead);if(!L.length)return toast("No leads yet");
- copy(L.map(p=>[p.name,st.dir,st.store,"Prospecting"].map(clean).join("\t")).join("\n"));};
-$("copyLeadsB").onclick=()=>{const s=S.session,L=s.stops.filter(isLead);if(!L.length)return toast("No leads yet");const d=new Date(s.date).toLocaleDateString("en-US");
- copy(L.map(p=>[d,"In Person",p.next,[p.contact,p.phone,p.email,p.carrier&&p.carrier!=="Unknown"?"On "+p.carrier:"",p.lines?p.lines+" lines":"",(p.interest||[]).length?"Wants "+p.interest.join("/"):"",p.notes].filter(Boolean).join("; ")].map(clean).join("\t")).join("\n"));};
 function archive(){const s=S.session;if(!s)return;if($("recapAdd").value)s.note=$("recapAdd").value;S.history.unshift(s);S.session=null;$("recapAdd").value="";save();}
-$("endDay").onclick=()=>{if(!confirm("End today's blitz and save it to your history?"))return;archive();toast("Saved to history");go("history");};
+$("endDay").onclick=()=>{if(!confirm("End this session and save it to your log?"))return;const k=S.session.kind;archive();toast("Saved to your log");logTab=k;go("history");};
 
-/* HISTORY */
-function renderHistory(){const H=S.history;
- $("h-days").textContent=H.length;$("h-visits").textContent=Object.keys(S.visited).length;$("h-leads").textContent=H.reduce((a,s)=>a+s.stops.filter(isLead).length,0);
- const fu=[];H.forEach(s=>s.stops.forEach(p=>{if(p.outcome==="Lead - follow up"||p.outcome==="Come back later")fu.push(Object.assign({},p,{d:s.date}));}));
- const worked={};H.forEach(s=>worked[s.vertical]=1);
- const untried=Object.keys(VERTICALS).filter(v=>v!=="All verticals"&&!worked[v]);
- const sug=[];
- if(fu.length){const o=fu[fu.length-1];sug.push(`<b>${fu.length} follow-up${fu.length>1?"s":""} waiting.</b> Oldest: ${esc(o.name)} (${new Date(o.d).toLocaleDateString("en-US")}).`);}
- if(untried.length)sug.push(`Verticals you haven't worked yet: ${untried.slice(0,4).map(esc).join(", ")}.`);
- const far=freshDir();if(far)sug.push(`Fresh ground: you've worked least to the <b>${far}</b> of where you usually start. Head that way next.`);
- sug.push(`Businesses you've visited in the last ${S.settings.days} days are skipped automatically on new routes.`);
- $("suggestTxt2").innerHTML=sug.join("<br><br>");
- $("histList").innerHTML=(fu.length?`<h3 style="margin:18px 0 4px">Follow-ups</h3>`+fu.map(p=>`<div class="stop"><div class="num">!</div><div style="flex:1"><div class="nm">${esc(p.name)}</div><div class="ad">${esc(p.outcome)} · ${new Date(p.d).toLocaleDateString("en-US")}${p.next?" · "+esc(p.next):""}${p.phone?" · "+esc(p.phone):""}</div></div><a class="note" target="_blank" rel="noopener" href="${navUrl(p)}">Map</a></div>`).join(""):"")+
-  (H.length?`<h3 style="margin:18px 0 4px">Past blitzes</h3>`+H.map(s=>{const v=s.stops.filter(p=>p.outcome).length;return `<div class="stop"><div class="num done">${v}</div><div style="flex:1"><div class="nm">${new Date(s.date).toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})} · ${esc(s.vertical)}</div><div class="ad">${esc(s.start.label||"")} · ${v} visited · ${s.stops.filter(isLead).length} leads</div></div></div>`;}).join(""):`<p class="note">No blitzes saved yet. Finish a route and tap “End day” to start building your territory.</p>`);}
-function freshDir(){const all=Object.values(S.visited);if(all.length<5||!S.history.length)return"";const c=S.history.map(s=>s.start);
- const lat=c.reduce((a,b)=>a+b.lat,0)/c.length,lon=c.reduce((a,b)=>a+b.lon,0)/c.length,q={north:0,south:0,east:0,west:0};
- all.forEach(p=>{const dy=p.lat-lat,dx=(p.lon-lon)*Math.cos(lat*Math.PI/180);if(Math.abs(dy)>Math.abs(dx))q[dy>0?"north":"south"]++;else q[dx>0?"east":"west"]++;});
- return Object.entries(q).sort((a,b)=>a[1]-b[1])[0][0];}
-$("exportBtn").onclick=()=>{const b=new Blob([JSON.stringify(S)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=`true-prospect-backup-${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(a);a.click();a.remove();};
+/* ================= LOG ================= */
+let logTab="call";
+seg("logTab",v=>{logTab=v;renderHistory();});
+function renderHistory(){$("logTab").querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.v===logTab));
+ const all=[...(S.session?[S.session]:[]),...S.history].filter(s=>s.kind===logTab);
+ if(logTab==="call"){const calls=[...S.calls].sort((a,b)=>b.start-a.start);const t=todayYMD(),wk=Date.now()-7*864e5;
+  $("logStats").innerHTML=`<div><b>${calls.filter(c=>ymd(c.start)===t).length}</b><span>Dials today</span></div><div><b>${calls.filter(c=>c.start>wk).length}</b><span>Last 7 days</span></div><div><b>${calls.filter(c=>c.start>wk&&CONNECT.has(c.outcome)).length}</b><span>Connects (7d)</span></div>`;
+  $("histList").innerHTML=calls.length?calls.slice(0,150).map(c=>`<div class="stop"><div class="num ${CONNECT.has(c.outcome)?"done":""}">&#128222;</div><div style="flex:1"><div class="nm">${esc(c.name)}</div><div class="ad">${fmtDT(c.start)}${c.dur?` · ${Math.max(1,Math.round(c.dur/60))} min`:""} · ${esc(prettyPhone(c.phone))}</div>${c.outcome?`<span class="tag">${esc(c.outcome)}</span>`:""}</div></div>`).join(""):`<p class="note">No calls logged yet. Tap Prospect Calling on the home screen to start.</p>`;}
+ else{const stops=[];all.forEach(s=>s.stops.forEach(p=>{if(p.outcome)stops.push(Object.assign({sd:s.date},p));}));stops.sort((a,b)=>(b.at||Date.parse(b.sd))-(a.at||Date.parse(a.sd)));const wk=Date.now()-7*864e5;
+  $("logStats").innerHTML=`<div><b>${all.length}</b><span>Blitzes</span></div><div><b>${stops.filter(p=>(p.at||0)>wk).length}</b><span>Stops (7d)</span></div><div><b>${stops.filter(isLead).length}</b><span>Leads</span></div>`;
+  $("histList").innerHTML=stops.length?stops.slice(0,150).map(p=>`<div class="stop"><div class="num done">&#128694;</div><div style="flex:1"><div class="nm">${esc(p.name)}</div><div class="ad">${p.at?fmtDT(p.at):new Date(p.sd).toLocaleDateString("en-US")}${p.addr?" · "+esc(p.addr):""}</div><span class="tag">${esc(p.outcome)}</span></div></div>`).join(""):`<p class="note">No stops logged yet.</p>`;}}
+$("exportBtn").onclick=()=>{const b=new Blob([JSON.stringify(S)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=`true-prospect-backup-${todayYMD()}.json`;document.body.appendChild(a);a.click();a.remove();};
 $("importBtn").onclick=()=>$("importFile").click();
-$("importFile").onchange=async e=>{const f=e.target.files[0];e.target.value="";if(!f)return;try{const d=JSON.parse(await f.text());if(!d.settings)throw 0;if(!confirm("Replace everything on this phone with this backup?"))return;S=Object.assign(blank(),d);save();toast("Restored");renderHistory();}catch(x){toast("That file isn't a True Prospect backup");}};
+$("importFile").onchange=async e=>{const f=e.target.files[0];e.target.value="";if(!f)return;try{const d=JSON.parse(await f.text());if(!d.settings)throw 0;if(!confirm("Replace everything on this phone with this backup?"))return;localStorage.setItem(KEY,JSON.stringify(d));S=load();save();toast("Restored");renderHistory();}catch(x){toast("That file isn't a True Prospect backup");}};
 
-/* SETTINGS */
-function renderSettings(){const st=S.settings;$("set-name").value=st.name;$("set-email").value=st.email;$("set-dir").value=st.dir;$("set-store").value=st.store;$("set-cc").value=st.cc;$("set-maps").value=st.maps;$("set-days").value=st.days;}
+/* ================= HEAT MAP ================= */
+let hmap,hlayer;
+function heatPoints(){const pts=[];Object.values(S.visited).forEach(v=>{if(v.lat)pts.push({lat:v.lat,lon:v.lon,k:v.kind==="call"?"call":"blitz"});});S.calls.forEach(c=>{if(c.lat&&!pts.find(p=>p.lat===c.lat&&p.lon===c.lon))pts.push({lat:c.lat,lon:c.lon,k:"call"});});return pts;}
+function renderHeat(){const pts=heatPoints();
+ if(!window.L){$("heat").innerHTML='<div class="note" style="padding:20px">Map unavailable offline.</div>';return;}
+ if(!hmap){hmap=L.map("heat",{zoomControl:true});L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"&copy; OpenStreetMap"}).addTo(hmap);}
+ if(hlayer)hlayer.remove();hlayer=L.layerGroup().addTo(hmap);
+ const cells={};pts.forEach(p=>{const k=(Math.round(p.lat*200)/200)+","+(Math.round(p.lon*200)/200)+","+p.k;cells[k]=(cells[k]||0)+1;});
+ Object.entries(cells).forEach(([k,n])=>{const [la,lo,kind]=k.split(",");L.circle([+la,+lo],{radius:180+60*Math.min(n,10),color:kind==="call"?"#111":"#FF6A00",weight:1,fillColor:kind==="call"?"#111":"#FF6A00",fillOpacity:Math.min(.75,.18+.07*n)}).bindTooltip(`${n} ${kind==="call"?"calls":"stops"}`).addTo(hlayer);});
+ S.visitQueue.forEach(v=>{if(v.lat)L.circleMarker([v.lat,v.lon],{radius:7,color:"#7a3cff",fillColor:"#7a3cff",fillOpacity:.9}).bindTooltip("Wants a visit: "+v.name).addTo(hlayer);});
+ const ll=pts.map(p=>[p.lat,p.lon]);if(S.loc)ll.push([S.loc.lat,S.loc.lon]);
+ setTimeout(()=>{hmap.invalidateSize();if(ll.length)hmap.fitBounds(ll,{padding:[30,30],maxZoom:14});else hmap.setView([39.8,-98.6],4);},60);
+ const sug=[];if(!pts.length)sug.push("Nothing logged yet. Your heat map fills in as you call and walk.");
+ else{const c=S.loc||{lat:ll.reduce((a,b)=>a+b[0],0)/ll.length,lon:ll.reduce((a,b)=>a+b[1],0)/ll.length};const q={north:0,south:0,east:0,west:0};
+  pts.forEach(p=>{const dy=p.lat-c.lat,dx=(p.lon-c.lon)*Math.cos(c.lat*Math.PI/180);if(Math.abs(dy)>Math.abs(dx))q[dy>0?"north":"south"]++;else q[dx>0?"east":"west"]++;});
+  const least=Object.entries(q).sort((a,b)=>a[1]-b[1])[0][0];sug.push(`Fresh ground: you've worked least to the <b>${least}</b>. Head that way next.`);}
+ if(S.visitQueue.length)sug.push(`<b>${S.visitQueue.length}</b> business${S.visitQueue.length>1?"es want":" wants"} a visit (purple dots). They'll be added to your next Foot Blitz route automatically.`);
+ const due=dueFollowups().length;if(due)sug.push(`<b>${due}</b> follow-up${due>1?"s":""} due on your home screen.`);
+ $("heatSug").innerHTML=sug.join("<br><br>");}
+
+/* ================= SETTINGS ================= */
+function renderSettings(){const st=S.settings;$("set-name").value=st.name;$("set-email").value=st.email;$("set-dir").value=st.dir;$("set-store").value=st.store;$("set-cc").value=st.cc;$("set-maps").value=st.maps;$("set-days").value=st.days;$("set-goal").value=st.goal||50;
+ const d=Object.entries(S.dnc);$("dncList").innerHTML=d.length?d.map(([n,v])=>`<div class="stop"><div style="flex:1"><div class="nm">${esc(v.name)}</div><div class="ad">${esc(prettyPhone(n))} · added ${new Date(v.t).toLocaleDateString("en-US")}</div></div><button class="btn ghost sm" style="width:auto;margin:0" data-rm="${n}">Remove</button></div>`).join(""):"No numbers on your do-not-call list.";
+ $("dncList").querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>{if(!confirm("Remove from do-not-call?"))return;delete S.dnc[b.dataset.rm];save();renderSettings();});}
 $("saveSet").onclick=()=>{const st=S.settings;st.name=$("set-name").value.trim();st.email=$("set-email").value.trim();st.dir=$("set-dir").value.trim();st.store=$("set-store").value.trim();
- st.cc=$("set-cc").value.trim();st.maps=$("set-maps").value;st.days=Math.max(0,parseInt($("set-days").value,10)||0);save();toast("Saved");go("home");};
+ st.cc=$("set-cc").value.trim();st.maps=$("set-maps").value;st.days=Math.max(0,parseInt($("set-days").value,10)||0);st.goal=Math.max(1,parseInt($("set-goal").value,10)||50);save();toast("Saved");go("home");};
 
+/* ================= BOOT ================= */
+window.__tp={parseCard,openNow};
 go("home");
-if(!S.settings.name)setTimeout(()=>toast("First time? Tap ⚙ to add your name and email"),700);
+if(!S.settings.name)setTimeout(()=>toast("First time? Tap \u2699 to add your name and email"),700);
 if("serviceWorker" in navigator&&location.protocol==="https:")navigator.serviceWorker.register("sw.js").catch(()=>{});
 })();
 </script>
